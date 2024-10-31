@@ -1,1 +1,82 @@
-# python-package-template
+<div style="text-align: center;">
+
+  <img src="./assets/icon.svg" width="200" />
+
+  <h1>Python Package Template</h1>
+
+  <p>This project is a template for a Python package.</p>
+  <p>Check my <a href="http://">AI Cloud Project Template</a></p>
+
+  <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/palette/macchiato.png" width="400" />
+
+</div>
+
+[![python](https://img.shields.io/badge/python-3.11+-blue?logo=python)](https://www.python.org/downloads/release/python-3110/)
+[![OpenAI](https://img.shields.io/badge/OpenAI-%23412991?logo=openai&logoColor=white)](https://learn.microsoft.com/en-us/azure/ai-services/openai/)
+[![Debian](https://img.shields.io/badge/Debian-A81D33?logo=debian&logoColor=fff)](https://www.debian.org/)
+
+[![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?logo=github-actions&logoColor=white)](https://github.com/features/actions)
+[![GitLab CI](https://img.shields.io/badge/GitLab%20CI-FC6D26?logo=gitlab&logoColor=fff)](https://docs.gitlab.com/ee/ci/)
+[![Wheel](https://img.shields.io/pypi/wheel/octocheese)](dist)
+[![MkDocs](https://img.shields.io/badge/MkDocs-526CFE?logo=materialformkdocs&logoColor=fff)](https://www.mkdocs.org/)
+[![mkdocs-material](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/juftin/mkdocs-material/66d65cf/src/templates/assets/images/badge.json)]()
+[![Style: Ruff](https://img.shields.io/badge/style-ruff-41B5BE?style=flat)](https://github.com/charliermarsh/ruff)
+
+
+
+
+This package is focused on extracting information from emails and PDF documents using artificial intelligence (AI).
+This project uses [uv](https://docs.astral.sh/uv) for package management. We will follow the same naming conventions. For example, there is a difference between a library (package) project and an application project. This is a package project.
+- Uv is a single tool to replace pip, pip-tools, pipx, poetry, pyenv, virtualenv, and more.
+
+
+It contains the following parts :
+- The python paddckage (python_package_template): contains the code for the project. Can be used by users by pip installing the wheel and is maintained by the maintainers.
+- Docs made using MkDocs.
+
+## 👥  Authors
+- (Author) Amine Djeghri
+
+## 🧠 Features
+
+**Engineering:**
+- [x] Use UV to manage packages
+- [x] pre-commit hooks: use ``ruff`` to ensure the code quality & ``detect-secrets`` to scan the secrets in the code.
+- [x] Logging using loguru
+
+**CI/CD & Maintenance tools:**
+- [x] CI/CD pipelines with GitHub and GitLab (cache is not yet enabled in GitHub Actions)
+- [x] Local GitHub Actions using ``github act`` and local GitLab CI/CD using ``gitlab-ci-local``
+
+
+**Documentation:**
+- [x] Wiki creation and setup of documentation website using Mkdocs
+- [x] GitHub Pages deployment using mkdocs gh-deploy plugin
+
+
+## ⚙️ Steps for Installation (Users)
+### 1.1. Prerequisites
+- Ubuntu 22.04
+- Python 3.11
+
+### 1.2. Installation
+use pip or uv pip to install the package :
+```bash
+pip install dist/my-package-0.1.0-py3-none-any.whl
+# or
+uv pip install dist/my-package-0.1.0-py3-none-any.whl
+```
+
+### 1.3. Usage
+
+````python
+
+````
+
+### 1.3. Check the documentation
+
+You can check the documentation, the ``notebooks`` and the examples in the docs folder.
+
+## ⚙️ Steps for Installation (Developers & Maintainers)
+
+- Check the [CONTRIBUTING.md](CONTRIBUTING.md) file for installation instructions
