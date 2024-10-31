@@ -10,20 +10,21 @@ First off, thanks for taking the time to contribute! ❤️
     - [UV](https://docs.astral.sh/uv/ ) is powerful (multi-thread, package graph solving, rust backend, etc.) use it as much as you can.
     - If you have a lot of data, use Polars for faster and more efficient dataframe processing.
     - If you have CPU intensive tasks, use multiprocessing with python's pool map.
-- Exceptions:
-  - Always log the exceptions and errors (use loguru) and then raise them
-  ```py
-      except Exception as e:
-        logger.error(e)  # Log the original error  with a personalized message or with e (only the message will be logged)
-        raise e # All the stack trace will be logged
-  ```
-  - Sometimes, you don't need to raise the exception (in a loop for example) to not interrupt the execution.
-- Use if else instead of catching and raising the exception when possible (log and raise also)
-  ```py
-      if not os.path.exists(file_path):
-          logger.error(f"File not found: {file_path}. The current directory is: {os.getcwd()}")
-          raise FileNotFoundError(f"The file {file_path} does not exist.")
-  ```
+
+- Exceptions:  
+    - Always log the exceptions and errors (use loguru) and then raise them
+    ```py
+        except Exception as e:
+          logger.error(e)  # Log the original error  with a personalized message or with e (only the message will be logged)
+          raise e # All the stack trace will be logged
+    ```
+    - Sometimes, you don't need to raise the exception (in a loop for example) to not interrupt the execution.
+    - Use if else instead of catching and raising the exception when possible (log and raise also)
+      ```py
+          if not os.path.exists(file_path):
+              logger.error(f"File not found: {file_path}. The current directory is: {os.getcwd()}")
+              raise FileNotFoundError(f"The file {file_path} does not exist.")
+      ```
 ## How to contribute
 ### 1.File structure (🌳 Tree)
 
