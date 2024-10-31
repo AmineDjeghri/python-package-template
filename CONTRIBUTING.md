@@ -11,7 +11,7 @@ First off, thanks for taking the time to contribute! ❤️
     - If you have a lot of data, use Polars for faster and more efficient dataframe processing.
     - If you have CPU intensive tasks, use multiprocessing with python's pool map.
 
-- Exceptions:  
+- Exceptions:
     - Always log the exceptions and errors (use loguru) and then raise them
     ```py
         except Exception as e:
