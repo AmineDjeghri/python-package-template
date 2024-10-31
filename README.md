@@ -54,11 +54,16 @@ It contains the following parts :
 
 - [x] Logging using loguru
 
+
 **CI/CD & Maintenance tools:**
 - [x] CI/CD pipelines with GitHub and GitLab (cache is not yet enabled in GitHub Actions)
 
 - [x] Local GitHub Actions using ``github act`` and local GitLab CI/CD using ``gitlab-ci-local``
 
+- [x] Docker, Gitlab CI and Github Actions all use the same make install command.
+  There is no need to handle them separately.
+- [ ] Deploy the documentation using mkdocs gh-deploy
+- [ ] Deploy the wheel in packages github
 
 **Documentation:**
 - [x] Wiki creation and setup of documentation website using Mkdocs
