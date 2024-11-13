@@ -7,7 +7,7 @@ YELLOW=\033[0;33m
 NC=\033[0m
 
 NVM_USE := export NVM_DIR="$$HOME/.nvm" && . "$$NVM_DIR/nvm.sh" && nvm use
-UV := "$$HOME/.cargo/bin/uv" # keep the quotes incase the path contains spaces
+UV := "$$HOME/.local/bin/uv" # keep the quotes incase the path contains spaces
 
 # installation
 install-uv:
@@ -17,7 +17,7 @@ install-uv:
 		$(UV) self update; \
 	else \
 	     echo "${YELLOW}Installing uv${NC}"; \
-		 curl -LsSf https://astral.sh/uv/install.sh | bash ; \
+		 curl -LsSf https://astral.sh/uv/install.sh | env UV_INSTALL_DIR="$$HOME/.local/bin" sh ; \
 	fi
 
 install-prod: install-uv
