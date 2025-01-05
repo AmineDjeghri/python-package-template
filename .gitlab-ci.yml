@@ -1,0 +1,28 @@
+default:
+  image: python:3.11
+
+stages:
+  - test-package
+
+variables:
+  VENV_PATH: "$CI_PROJECT_DIR/.venv"  # Define virtual environment path
+  UV_CACHE_DIR: .uv-cache
+cache:
+  key:
+    files: # can't use more than two files in a single cache key.
+      - pyproject.toml
+      - package.json
+
+  paths:
+    - $VENV_PATH  # Cache the virtual environment
+    - $UV_CACHE_DIR
+
+evaluate:
+  stage: test-package  # Reference the correct stage
+  # if you need sudo
+#  before_script:
+#    - apt-get update &&  apt-get install -y sudo && apt-get clean && rm -rf /var/lib/apt/lists/*
+  script:
+    - make install-dev
+    - make test
+    - make cache-uv

@@ -1,0 +1,9 @@
+{
+  "engines": {
+    "npm": ">=10.0.0 <11.0.0",
+    "node": "=22.8.0"
+  },
+  "dependencies": {
+    "gitlab-ci-local": "4.56.2"
+  }
+}

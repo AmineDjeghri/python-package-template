@@ -1,0 +1,46 @@
+name: 'Tests'
+
+on:
+  pull_request:
+  push:
+#on:
+#  pull_request:
+#    paths:
+#      - src/ml
+#      - src/evaluation
+
+env:
+  VENV_PATH: "venv_path"
+  AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
+  AZURE_OPENAI_API_HOST: ${{ vars.AZURE_OPENAI_API_HOST }}
+  AZURE_OPENAI_API_VERSION: ${{ vars.AZURE_OPENAI_API_VERSION }}
+  AZURE_OPENAI_ENDPOINT: ${{ vars.AZURE_OPENAI_API_BASE }}
+  AZURE_OPENAI_DEPLOYMENT_NAME: ${{ vars.AZURE_OPENAI_DEPLOYMENT_NAME }}
+  AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME: ${{ vars.AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME }}
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: "Set up Python"
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: ".python-version"
+
+      # install sudo if needed
+#      - name: Install sudo
+#        run: |
+#          sudo apt update
+#          sudo apt-get update &&  apt-get install -y sudo && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+      - name: Install Python dependencies
+        shell: bash
+        run: |
+          make install-dev
+      - name: Run tests
+        shell: bash
+        run: |
+          make test
