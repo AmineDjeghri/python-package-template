@@ -1,0 +1,13 @@
+LICENSE
+README.md
+pyproject.toml
+src/python_package_template/__init__.py
+src/python_package_template/example.py
+src/python_package_template/utils.py
+src/python_package_template.egg-info/PKG-INFO
+src/python_package_template.egg-info/SOURCES.txt
+src/python_package_template.egg-info/dependency_links.txt
+src/python_package_template.egg-info/entry_points.txt
+src/python_package_template.egg-info/requires.txt
+src/python_package_template.egg-info/top_level.txt
+tests/test_example.py
