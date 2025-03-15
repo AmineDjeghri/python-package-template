@@ -41,6 +41,8 @@ jobs:
 
 
   deploy: # this needs the "Read and write permissions" in github actions settings -> general -> Workflow permissions
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     needs: [test-and-build, pre-commit]
     if: success()
@@ -57,9 +59,8 @@ jobs:
         with:
           main_branch: feature/github-actions
           create_tag: true
-          tag_prefix: 'tags'
       - name: Use version
-        run: echo "Calculated version ${{ steps.calculate-version.outputs.version-string }}"
+        run: 'echo "Calculated version: ${{ steps.calculate-version.outputs.version-string }}"'
 
       - name: Create Release
         id: create_release
