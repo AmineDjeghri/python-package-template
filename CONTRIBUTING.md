@@ -97,7 +97,7 @@ Check the readme file.
 - Dependabot file for autoupdates can be found [here](.github/dependabot.yml)
 - When Dependabot creates many PRs and you accept one, wait for the other to be rebased
 - Enable dependabot for the project: https://docs.github.com/en/code-security/getting-started/dependabot-quickstart-guide#enabling-dependabot-for-your-repository
--
+
 
 ### 4.5. (For repository maintainers) Merging strategies & GitHub actions guidelines**
 
@@ -105,3 +105,7 @@ Check the readme file.
   strategy.
 - DEV → MAIN: Then, you should create a merge from dev to main with Squash strategy.
 - MAIN → RELEASE: The status of the ticket will change then to 'done.'
+
+#### Creating tags for releases
+- First, pull the main branch, then run ``make build-package``.
+- In GitHub, I create a release with that tag (same as in pyproject.toml), automatically generate the release notes and upload the package (wheel).
