@@ -90,7 +90,7 @@ Check the readme file.
    - if your project is a python package, run ``make build-pacakge`` to build the package and create the wheel in the `dist` folder
 3. Run CI/CD Locally: Depending on the platform you use:
    - GitHub Actions: run `make install-act` then `make act` for GitHub Actions (Docker should be running).
-4. Create a pull request. If the GitHub actions pass, the PR will be accepted and merged to dev.
+4. Create a pull request (I use pycharm since it regroups the commits). If the GitHub actions pass, the PR will be accepted and merged to dev.
 
 
 ### 4.5. Dependabot: automatic dependency updates and more
