@@ -106,6 +106,11 @@ Check the readme file.
 - DEV → MAIN: Then, you should create a merge from dev to main with Squash strategy.
 - MAIN → RELEASE: The status of the ticket will change then to 'done.'
 
+#### Github pages automatic deployment :
+Check this link to configure Github pages [link](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
+- Github Actions will run automatically and deploy it from the main branch. If you face an error saying that your branch is not allowed to deploy to github-pages, check this [issue](https://github.com/orgs/community/discussions/39054)"
+- Merge main to gh-pages
+- Either run ``make deploy-doc-gh`` it will push the documentation to the gh-pages branch
 #### Creating tags for releases
 - First, pull the main branch, then run ``make build-package``.
 - In GitHub, I create a release with that tag (same as in pyproject.toml), automatically generate the release notes and upload the package (wheel).
