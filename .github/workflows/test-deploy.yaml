@@ -3,6 +3,7 @@ name: 'Test-Deploy'
 on:
   pull_request:
   push:
+    branches: [main, dev, github-actions]
 
 jobs:
 
@@ -58,9 +59,15 @@ jobs:
           name: build-artifact
           path: dist/
 
-      - name: Simulate Deployment
-        run: |
-          echo "Deploying to staging..."
-          ls dist/
-
+      - name: release
+        uses: actions/create-release@v1
+        id: create_release
+        with:
+          draft: false
+          prerelease: false
+          release_name: ${{ steps.version.outputs.version }}
+          tag_name: ${{ github.ref }}
+          body_path: CHANGELOG.md
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
 # add github pages deployment
