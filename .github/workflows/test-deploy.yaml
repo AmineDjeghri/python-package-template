@@ -87,6 +87,6 @@ jobs:
             Changes in this Release
             - First Change
             - Second Change
-          draft: true
+          draft: false
           prerelease: false
 # add github pages deployment
