@@ -6,7 +6,6 @@ GREEN=\033[0;32m
 YELLOW=\033[0;33m
 NC=\033[0m
 
-NVM_USE := export NVM_DIR="$$HOME/.nvm" && . "$$NVM_DIR/nvm.sh" && nvm use
 UV := "$$HOME/.local/bin/uv" # keep the quotes incase the path contains spaces
 
 # installation
@@ -39,27 +38,6 @@ pre-commit:pre-commit-install
 	@echo "${YELLOW}=========> Running pre-commit...${NC}"
 	$(UV) run pre-commit run --all-files
 
-###### NVM & npm packages ########
-install-nvm:
-	echo "${YELLOW}=========> Installing Evaluation app $(NC)"
-
-	@if [ -d "$$HOME/.nvm" ]; then \
-		echo "${YELLOW}NVM is already installed.${NC}"; \
-		$(NVM_USE) --version; \
-	else \
-		echo "${YELLOW}=========> Installing NVM...${NC}"; \
-		curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash; \
-	fi
-
-	# Activate NVM (makefile runs in a subshell, always use this)
-	@echo "${YELLOW}Restart your terminal to use nvm.  If you are on MacOS, run nvm ls, if there is no node installed, run nvm install ${NC}"
-	@bash -c ". $$HOME/.nvm/nvm.sh; nvm install"
-
-install-npm-dependencies: install-nvm
-	@echo "${YELLOW}=========> Installing npm packages...${NC}"
-	@$(NVM_USE) && npm ci
-	@echo "${GREEN} Installation complete ${NC}"
-
 
 ####### local CI / CD ########
 # uv caching :
@@ -83,21 +61,9 @@ act:
 	@./bin/act --env-file .env --secret-file .secrets
 
 
-# Gitlab CI locally
-GITLAB_CI_LOCAL_CMD=./node_modules/.bin/gitlab-ci-local
-install-gitlab-ci-local: install-npm-packages
-    # gitlab-ci-local is an npm package and is installed within the install-evaluation-app step
-	@echo "${GREEN}Installed gitlab-ci-local${NC}"
-	@echo "${GREEN}gitlab-ci-local version is $$($(NVM_USE) > /dev/null && $(GITLAB_CI_LOCAL_CMD) --version | tail -n 1) ${NC}"
-gitlab-ci-local:
-	@echo "${YELLOW}Running Gitlab Runner locally...${NC}"
-	@$(NVM_USE) && $(GITLAB_CI_LOCAL_CMD) --network=host --variables-file .env
-
 # clear GitHub and Gitlab CI local caches
 clear_ci_cache:
 	@echo "${YELLOW}Clearing CI cache...${NC}"
-	@echo "${YELLOW}Clearing gitlab ci local cache...${NC}"
-	rm -rf .gitlab-ci-local/cache
 	@echo "${YELLOW}Clearing Github ACT local cache...${NC}"
 	rm -rf ~/.cache/act ~/.cache/actcache
 

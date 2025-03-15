@@ -25,16 +25,6 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: "Set up Python"
-        uses: actions/setup-python@v5
-        with:
-          python-version-file: ".python-version"
-
-      # install sudo if needed
-#      - name: Install sudo
-#        run: |
-#          sudo apt update
-#          sudo apt-get update &&  apt-get install -y sudo && apt-get clean && rm -rf /var/lib/apt/lists/*
 
       - name: Install Python dependencies
         shell: bash
