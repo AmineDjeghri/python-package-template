@@ -1,0 +1,63 @@
+name: 'Test-Deploy'
+
+on:
+  pull_request:
+  push:
+
+jobs:
+
+  pre-commit:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: pre-commit/action@v3.0.1
+
+  test-and-build:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      # I prefer to use my Makefile to test the  commands instead of calling uv actions.
+      - name: Install Python dependencies
+        shell: bash
+        run: |
+          make install-dev
+
+      - name: Run tests
+        shell: bash
+        run: |
+          make test
+
+      - name: Build package
+        shell: bash
+        run: |
+          make build-package
+
+      # Upload the build output as an artifact
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifact
+          path: build/
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test-and-build
+    if: success()
+
+    steps:
+      # Download the artifact from the build stage
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifact
+          path: build/
+
+      - name: Simulate Deployment
+        run: |
+          echo "Deploying to staging..."
+          ls build/
