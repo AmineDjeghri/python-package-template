@@ -42,7 +42,7 @@ jobs:
 
   deploy: # this needs the "Read and write permissions" in github actions settings -> general -> Workflow permissions
     permissions:
-      contents: read
+      contents: write
     runs-on: ubuntu-latest
     needs: [test-and-build, pre-commit]
     if: success()
