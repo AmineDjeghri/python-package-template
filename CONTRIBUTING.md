@@ -95,6 +95,7 @@ Check the readme file.
 
 ### 4.5. Dependabot: automatic dependency updates and more
 - Dependabot file for autoupdates can be found [here](.github/dependabot.yml)
+- When Dependabot creates many PRs and you accept one, wait for the other to be rebased
 - Enable dependabot for the project: https://docs.github.com/en/code-security/getting-started/dependabot-quickstart-guide#enabling-dependabot-for-your-repository
 -
 
