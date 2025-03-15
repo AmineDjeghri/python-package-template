@@ -39,12 +39,6 @@ jobs:
         run: |
           make build-package
 
-      # Upload the build output as an artifact
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-artifact
-          path: dist/
 
   deploy: # this needs the "Read and write permissions" in github actions settings -> general -> Workflow permissions
     runs-on: ubuntu-latest
@@ -52,14 +46,6 @@ jobs:
     if: success()
 
     steps:
-      # Download the artifact from the build stage
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: build-artifact
-          path: dist/
-
-
       - name: Checkout code
         uses: actions/checkout@v3
         with:
@@ -69,7 +55,7 @@ jobs:
         id: calculate-version
         uses: bitshifted/git-auto-semver@v1
         with:
-          main_branch: main, dev, feature/github-actions
+          main_branch: feature/github-actions
           create_tag: true
           tag_prefix: 'tags'
       - name: Use version
