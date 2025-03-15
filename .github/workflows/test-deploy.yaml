@@ -40,7 +40,7 @@ jobs:
           make build-package
 
   deploy:
-    if: ${{ github.event.pull_request.merged == true }}
+    #if: ${{ github.event.pull_request.merged == true }}
     # Add a dependency to the build job
     needs: [pre-commit,test-and-build]
 
