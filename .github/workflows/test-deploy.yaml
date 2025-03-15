@@ -51,7 +51,7 @@ jobs:
 
     # Deploy to the github-pages environment
     environment:
-      name: github-pages
+      name: gh-pages #name of the branch
       url: ${{ steps.deployment.outputs.page_url }}
 
     runs-on: ubuntu-latest
