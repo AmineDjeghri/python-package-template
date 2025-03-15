@@ -32,6 +32,7 @@ jobs:
         run: |
           make test
 
+      # build the python package. It is saved inside the dist folder
       - name: Build package
         shell: bash
         run: |
@@ -42,7 +43,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build-artifact
-          path: build/
+          path: dist/
 
   deploy:
     runs-on: ubuntu-latest
@@ -55,9 +56,11 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build-artifact
-          path: build/
+          path: dist/
 
       - name: Simulate Deployment
         run: |
           echo "Deploying to staging..."
-          ls build/
+          ls dist/
+
+# add github pages deployment
