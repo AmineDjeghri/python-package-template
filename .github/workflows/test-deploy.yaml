@@ -53,6 +53,15 @@ jobs:
         with:
           fetch-depth: 0
           fetch-tags: true
+      - name: calculate version
+        id: calculate-version
+        uses: bitshifted/git-auto-semver@v1
+        with:
+          main_branch: feature/github-actions
+          initial_version: 1.0.0
+          create_tag: true
+      - name: Use version
+        run: 'echo "Calculated version: ${{ steps.calculate-version.outputs.version-string }}"'
 
       - name: Create Release
         id: create_release
