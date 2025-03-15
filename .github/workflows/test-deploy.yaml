@@ -59,13 +59,30 @@ jobs:
           name: build-artifact
           path: dist/
 
+
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+      - name: calculate version
+        id: calculate-version
+        uses: bitshifted/git-auto-semver@v1
+        with:
+          main_branch: master
+          create_tag: true
+          tag_prefix: 'tags'
+      - name: Use version
+        run:
+          echo "Calculated version: ${{ steps.calculate-version.outputs.version-string }}"
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
-          tag_name: tesgt
+          tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
           body: |
             Changes in this Release
