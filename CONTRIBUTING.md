@@ -115,3 +115,4 @@ Check this link to configure GitHub pages [link](https://docs.github.com/en/page
 - #### Creating tags for releases
 - First, pull the main branch, then run ``make build-package``.
 - In GitHub, I create a release with that tag (same as in pyproject.toml), automatically generate the release notes and upload the package (wheel).
+- Using github actions, just make sure you have this set : https://github.com/actions/deploy-pages/issues/33#issuecomment-1198635538
