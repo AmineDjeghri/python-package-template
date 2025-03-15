@@ -73,8 +73,7 @@ jobs:
           create_tag: true
           tag_prefix: 'tags'
       - name: Use version
-        run:
-          echo "Calculated version: ${{ steps.calculate-version.outputs.version-string }}"
+        run: echo "Calculated version ${{ steps.calculate-version.outputs.version-string }}"
 
       - name: Create Release
         id: create_release
