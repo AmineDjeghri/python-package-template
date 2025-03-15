@@ -5,9 +5,9 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-    "pydantic-settings>=2.7.1",
+    "pydantic-settings>=2.8.1",
     "loguru==0.7.3",
-    "pydantic==2.10.4",
+    "pydantic==2.10.6",
 ]
 
 ############### uv configuration

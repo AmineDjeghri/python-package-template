@@ -54,7 +54,6 @@ Check the readme file.
 
 - run ``make pre-commit install`` to install pre-commit hooks
 - To install the GitHub actions locally, run ``make install-act``
-- To install the gitlab ci locally, run ``make install-ci``
 
 #### b. or Develop in a container
 - If you have a .venv folder locally, you need to delete it, otherwise it will create a conflict since the project is mounted in the container.
@@ -91,7 +90,6 @@ Check the readme file.
    - if your project is a python package, run ``make build-pacakge`` to build the package and create the wheel in the `dist` folder
 3. Run CI/CD Locally: Depending on the platform you use:
    - GitHub Actions: run `make install-act` then `make act` for GitHub Actions
-   - GitLab CI: run `make install-gitlab-ci-local` then `make gitlab-ci-local` for GitLab CI.
 4. Create a pull request. If the GitHub actions pass, the PR will be accepted and merged to dev.
 
 ### 4.5. (For repository maintainers) Merging strategies & GitHub actions guidelines**

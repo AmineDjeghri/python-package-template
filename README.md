@@ -19,7 +19,6 @@
 [![MkDocs](https://img.shields.io/badge/MkDocs-526CFE?logo=materialformkdocs&logoColor=fff)](#)
 [![mkdocs-material](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/juftin/mkdocs-material/66d65cf/src/templates/assets/images/badge.json)]()
 [![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=fff)](#)
-[![GitLab CI](https://img.shields.io/badge/GitLab%20CI-FC6D26?logo=gitlab&logoColor=fff)](#)
 [![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?logo=github-actions&logoColor=white)](#)
 
 
@@ -53,8 +52,8 @@ It contains the following parts :
 
 **CI/CD & Maintenance tools:**
 
-- [x] CI/CD pipelines: ``.github/workflows`` for GitHub and ``.gitlab-ci.yml`` for GitLab
-- [x] Local CI/CD pipelines: GitHub Actions using ``github act`` and local GitLab CI using ``gitlab-ci-local``
+- [x] CI/CD pipelines: ``.github/workflows`` for GitHub
+- [x] Local CI/CD pipelines: GitHub Actions using ``github act``
 
 **Documentation tools:**
 
@@ -64,6 +63,7 @@ It contains the following parts :
 
 Upcoming features:
 
+- [ ] add Dependabot
 - [ ] optimize caching in CI/CD
 - [ ] [Pull requests templates](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/creating-a-pull-request-template-for-your-repository)
 - [ ] deploy gh pages in actions
@@ -82,7 +82,6 @@ The following files are used in the contribution pipeline:
 - ``src/python_package_tempalte/utils.py``: logger using logguru and settings  using pydantic.
   the frontend.
 - `.github/workflows/**.yml`: GitHub actions configuration files.
-- `.gitlab-ci.yml`: Gitlab CI configuration files.
 - ``.gitignore``: contains the files to ignore in the project.
 
 ### 1.1.  Local Prerequisites
