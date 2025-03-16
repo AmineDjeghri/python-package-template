@@ -13,7 +13,7 @@ ENV PYTHONUNBUFFERED=1
 
 # keep this in case some commands use sudo (tesseract for example). This docker doesn't need a password
 #RUN apt-get update &&  apt-get install -y sudo && apt-get clean && rm -rf /var/lib/apt/lists/*
-RUN #apt-get install sudo
+
 
 RUN apt update -y
 RUN apt upgrade -y
