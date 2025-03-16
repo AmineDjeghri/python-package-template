@@ -72,8 +72,12 @@ jobs:
 #        id: deployment
 #        uses: actions/deploy-pages@v4
 
-      # echo ls
-      - name: echo ls
+      - name: Install Python dependencies
+        shell: bash
+        run: |
+          make install-dev
+
+      - name: Deploy Github Pages
         shell: bash
         run: |
           make deploy-doc-gh
