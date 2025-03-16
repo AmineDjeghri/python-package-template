@@ -95,6 +95,9 @@ docker-dev: docker-build
 	# need fix :  the .venv directory is unfortunately not retained in the container ( we need to solve it to retain it)
 	docker run -it --rm -v $(PROJECT_ROOT):/app -v /app/.venv --name $(CONTAINER_NAME)-dev $(CONTAINER_NAME) /bin/bash
 
+docker-github-actions: docker-build
+	@echo "${YELLOW}Running docker for github actions...${NC}"
+	docker run --rm -v $(PROJECT_ROOT):/app -v /app/.venv --name $(CONTAINER_NAME)-github-actions $(CONTAINER_NAME) /bin/bash
 
 ######## Builds ########
 # build package (wheel)
