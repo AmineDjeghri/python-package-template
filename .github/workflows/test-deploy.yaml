@@ -3,7 +3,6 @@ name: 'Test-Deploy'
 on:
   pull_request:
   push:
-    branches: [main, feature/github-actions]
 
 jobs:
 
@@ -39,6 +38,17 @@ jobs:
         run: |
           make build-package
 
+  test-docker-build:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Build docker image and run container
+        shell: bash
+        run: |
+          make docker-prod
   deploy-Github-Pages:
     # Add a dependency to the build job
     needs: [pre-commit, test-and-build]
