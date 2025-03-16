@@ -83,7 +83,7 @@ CONTAINER_NAME = python-package-template
 export PROJECT_ROOT = $(shell pwd)
 docker-build:
 	@echo "${YELLOW}Building docker image...${NC}"
-	docker build -t $(CONTAINER_NAME) -f docker/Dockerfile --progress=plain .
+	docker build -t $(CONTAINER_NAME) --progress=plain .
 docker-prod: docker-build
 	@echo "${YELLOW}Running docker for production...${NC}"
 	docker run -it --rm --name $(CONTAINER_NAME)-prod $(CONTAINER_NAME) /bin/bash
