@@ -97,7 +97,7 @@ docker-dev: docker-build
 
 docker-github-actions: docker-build
 	@echo "${YELLOW}Running docker for github actions...${NC}"
-	docker run --rm -v $(PROJECT_ROOT):/app -v /app/.venv --name $(CONTAINER_NAME)-github-actions $(CONTAINER_NAME) /bin/bash
+	docker run --rm --name $(CONTAINER_NAME)-prod $(CONTAINER_NAME) /bin/bash
 
 ######## Builds ########
 # build package (wheel)
