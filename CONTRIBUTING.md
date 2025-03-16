@@ -131,15 +131,14 @@ Check the readme file.
 
 #### Github pages automatic deployment :
 
-Check this link to configure GitHub
-pages [link](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
-
+Check this link to configure GitHub pages [link](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
+- You need to have the branch 'gh-pages' in your repository after following this tutorial.
+- You need to give the right permissions to GithubAction: Check that "Read and write permissions" are enabled in Settings -> Actions -> General -> Workflow permissions
 - Github Actions will run automatically and deploy it from the main branch. If you face an error saying that your branch
   is not allowed to deploy to github-pages, check this [issue](https://github.com/orgs/community/discussions/39054)"
-- Merge main to your GitHub branch, for example, gh-pages
-- or run ``make deploy-doc-gh`` it will push the documentation to the gh-pages branch
+- (Optional) If you want to manually deploy the documentation, run ``make deploy-doc-gh`` it will push the documentation to the gh-pages branch
 
-- #### Creating tags for releases
+#### Creating tags for releases
 - First, pull the main branch, then run ``make build-package``.
 - In GitHub, I create a release with that tag (same as in pyproject.toml), automatically generate the release notes and
   upload the package (wheel).
