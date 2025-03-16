@@ -58,26 +58,25 @@ It contains the following parts :
 - [x] pre-commit hooks: use ``ruff`` to ensure the code quality & ``detect-secrets`` to scan the secrets in the code.
 - [x] Logging using loguru (with colors)
 - [x] Pytest for unit tests
-- [x] Dockerized project (Dockerfile & docker-compose): for the evaluation pipeline.
+- [x] Dockerized project (Dockerfile) both for development and production
 - [x] Make commands to handle everything for you: install, run, test
 
 **CI/CD & Maintenance tools:**
 
 - [x] CI/CD pipelines: ``.github/workflows`` for GitHub
 - [x] Local CI/CD pipelines: GitHub Actions using ``github act``
+- [x] GitHub Actions for deploying to GitHub Pages with mkdocs gh-deploy
+- [x] Dependabot for automatic dependency and security updates
 
 **Documentation tools:**
 
 - [x] Wiki creation and setup of documentation website using Mkdocs
-- [x] GitHub Pages deployment using mkdocs gh-deploy plugin
+- [x] GitHub Actions for deploying to GitHub Pages with mkdocs gh-deploy
 
 
 Upcoming features:
-
-- [ ] add Dependabot
 - [ ] optimize caching in CI/CD
 - [ ] [Pull requests templates](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/creating-a-pull-request-template-for-your-repository)
-- [ ] deploy gh pages in actions
 
 
 ## 1. Getting started
@@ -93,6 +92,7 @@ The following files are used in the contribution pipeline:
 - ``src/python_package_tempalte/utils.py``: logger using logguru and settings  using pydantic.
   the frontend.
 - `.github/workflows/**.yml`: GitHub actions configuration files.
+- ``.github/dependabot.yml``: dependabot configuration file.
 - ``.gitignore``: contains the files to ignore in the project.
 
 ### 1.1.  Local Prerequisites
