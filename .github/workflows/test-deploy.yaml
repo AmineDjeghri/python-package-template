@@ -48,7 +48,7 @@ jobs:
       - name: Build docker image and run container
         shell: bash
         run: |
-          make docker-prod
+          make docker-github-actions
   deploy-Github-Pages:
     # Add a dependency to the build job
     needs: [pre-commit, test-and-build]
