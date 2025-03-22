@@ -100,7 +100,7 @@ Check the readme file.
 
     - Run ``make test`` to run the tests
     - Run ``make pre-commit`` to check the code style & linting.
-    - Run ``make serve-docs`` to update the documentation
+    - Run ``make deploy-doc-local`` to update the documentation locally and test the website.
     - (optional) Commit Messages: This project uses [Gitmoji](https://gitmoji.dev/) for commit messages. It helps to
       understand the purpose of the commit through emojis. For example, a commit message with a bug fix can be prefixed
       with
