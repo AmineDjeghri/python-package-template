@@ -7,7 +7,7 @@ Description-Content-Type: text/markdown
 License-File: LICENSE
 Requires-Dist: pydantic-settings>=2.8.1
 Requires-Dist: loguru==0.7.3
-Requires-Dist: pydantic==2.11.7
+Requires-Dist: pydantic==2.11.9
 Dynamic: license-file
 
 <div style="text-align: center;">
