@@ -178,3 +178,5 @@ bin/act
 # project files
 **/*tmp*.py
 **/*temp*.py
+
+!dist/$$.whl
