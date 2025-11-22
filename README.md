@@ -1,4 +1,4 @@
-<div style="text-align: center;">
+<div align="center">
 
   <img src="./assets/icon.svg" width="200" />
 
@@ -10,6 +10,7 @@
   <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/palette/macchiato.png" width="400" />
 
 </div>
+<div align="center">
 
 [![python](https://img.shields.io/badge/python-3.11+-blue?logo=python)](https://www.python.org/downloads/release/python-3110/)
 [![Debian](https://img.shields.io/badge/Debian-A81D33?logo=debian&logoColor=fff)](https://www.debian.org/)
@@ -21,6 +22,7 @@
 [![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=fff)](#)
 [![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?logo=github-actions&logoColor=white)](#)
 
+</div>
 
 This package is a template for a python package.
 This project uses [uv](https://docs.astral.sh/uv) for package management. We will follow the same naming conventions. For example, there is a difference between a library (package) project and an application project. This is a library (package) project.
@@ -113,3 +115,4 @@ Check the [CONTRIBUTING.md](CONTRIBUTING.md) file for installation instructions
 
 ## 2. Contributing
 Check the [CONTRIBUTING.md](CONTRIBUTING.md) file for more information.
+
