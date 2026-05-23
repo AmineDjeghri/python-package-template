@@ -179,4 +179,6 @@ bin/act
 **/*tmp*.py
 **/*temp*.py
 
+uv.lock
+
 !dist/$$.whl
