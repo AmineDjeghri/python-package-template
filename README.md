@@ -115,4 +115,3 @@ Check the [CONTRIBUTING.md](CONTRIBUTING.md) file for installation instructions
 
 ## 2. Contributing
 Check the [CONTRIBUTING.md](CONTRIBUTING.md) file for more information.
-
