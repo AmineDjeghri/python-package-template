@@ -24,6 +24,7 @@
   },
   "osvVulnerabilityAlerts": true,
   "pinDigests": false,
+  "rangeStrategy": "widen",
   "packageRules": [
     {
       "description": "Group pre-commit updates",

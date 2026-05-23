@@ -838,7 +838,7 @@ requires-dist = [
 [package.metadata.requires-dev]
 dev = [
     { name = "pre-commit", specifier = ">=4,<5" },
-    { name = "pytest", specifier = ">=8.3.0,<9.0.0" },
+    { name = "pytest", specifier = ">=8.3.0,<10" },
     { name = "pytest-asyncio", specifier = ">=1.3.0" },
     { name = "ruff", specifier = ">=0.15.14,<1" },
 ]
