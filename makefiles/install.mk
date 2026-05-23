@@ -33,5 +33,5 @@ install: install-uv ## Install dependencies using uv
 
 install-dev: install-uv ## Install dev dependencies using uv
 	@echo "${YELLOW}=========> Installing dev dependencies (required, dev and docs)...${NC}"
-	@$(UV) sync --dev
+	@$(UV) sync
 	@echo "${GREEN}Dev dependencies installed.${NC}"
