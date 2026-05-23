@@ -4,6 +4,6 @@
     "node": "=22.8.0"
   },
   "dependencies": {
-    "gitlab-ci-local": "4.55.0"
+    "gitlab-ci-local": "4.72.0"
   }
 }
