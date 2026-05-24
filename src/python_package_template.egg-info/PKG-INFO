@@ -2,15 +2,15 @@ Metadata-Version: 2.4
 Name: python-package-template
 Version: 0.1.0
 Summary: Add your description here
-Requires-Python: >=3.11
+Requires-Python: <3.15,>=3.12
 Description-Content-Type: text/markdown
 License-File: LICENSE
-Requires-Dist: pydantic-settings>=2.8.1
-Requires-Dist: loguru==0.7.3
-Requires-Dist: pydantic==2.11.9
+Requires-Dist: pydantic-settings<2.15.0,>=2.0.0
+Requires-Dist: loguru<0.8.0,>=0.7.3
+Requires-Dist: pydantic<2.15.0,>=2.12.0
 Dynamic: license-file
 
-<div style="text-align: center;">
+<div align="center">
 
   <img src="./assets/icon.svg" width="200" />
 
@@ -22,6 +22,7 @@ Dynamic: license-file
   <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/palette/macchiato.png" width="400" />
 
 </div>
+<div align="center">
 
 [![python](https://img.shields.io/badge/python-3.11+-blue?logo=python)](https://www.python.org/downloads/release/python-3110/)
 [![Debian](https://img.shields.io/badge/Debian-A81D33?logo=debian&logoColor=fff)](https://www.debian.org/)
@@ -33,6 +34,7 @@ Dynamic: license-file
 [![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=fff)](#)
 [![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?logo=github-actions&logoColor=white)](#)
 
+</div>
 
 This package is a template for a python package.
 This project uses [uv](https://docs.astral.sh/uv) for package management. We will follow the same naming conventions. For example, there is a difference between a library (package) project and an application project. This is a library (package) project.
