@@ -1,4 +1,4 @@
-from python_package_template.utils import logger
+from python_package_template.settings import logger
 
 
 def hello():
