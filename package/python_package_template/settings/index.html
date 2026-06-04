@@ -25,7 +25,7 @@
     
     
       
-        <title>Utils - Python Package Template</title>
+        <title>Settings - Python Package Template</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#src.python_package_template.utils" class="md-skip">
+        <a href="#src.python_package_template.settings" class="md-skip">
           Skip to content
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Utils
+              Settings
             
           </span>
         </div>
@@ -587,7 +587,7 @@
   <span class="md-ellipsis">
     
   
-    Utils
+    Settings
   
 
     
@@ -605,7 +605,7 @@
   <span class="md-ellipsis">
     
   
-    Utils
+    Settings
   
 
     
@@ -629,10 +629,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#src.python_package_template.utils" class="md-nav__link">
+  <a href="#src.python_package_template.settings" class="md-nav__link">
     <span class="md-ellipsis">
       
-        utils
+        settings
       
     </span>
   </a>
@@ -640,13 +640,30 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#src.python_package_template.utils.Settings" class="md-nav__link">
+  <a href="#src.python_package_template.settings.ApplicationSettings" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Settings
+        ApplicationSettings
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="ApplicationSettings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#src.python_package_template.settings.ApplicationSettings.model_post_init" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        model_post_init
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -699,10 +716,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#src.python_package_template.utils" class="md-nav__link">
+  <a href="#src.python_package_template.settings" class="md-nav__link">
     <span class="md-ellipsis">
       
-        utils
+        settings
       
     </span>
   </a>
@@ -710,13 +727,30 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#src.python_package_template.utils.Settings" class="md-nav__link">
+  <a href="#src.python_package_template.settings.ApplicationSettings" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Settings
+        ApplicationSettings
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="ApplicationSettings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#src.python_package_template.settings.ApplicationSettings.model_post_init" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        model_post_init
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -811,13 +845,13 @@
 
 
 
-  <h1>Utils</h1>
+  <h1>Settings</h1>
 
 <div class="doc doc-object doc-module">
 
 
 
-<a id="src.python_package_template.utils"></a>
+<a id="src.python_package_template.settings"></a>
     <div class="doc doc-contents first">
 
 
@@ -843,8 +877,8 @@
 
 
 
-<h2 id="src.python_package_template.utils.Settings" class="doc doc-heading">
-            <code>Settings</code>
+<h2 id="src.python_package_template.settings.ApplicationSettings" class="doc doc-heading">
+            <code>ApplicationSettings</code>
 
 
 </h2>
@@ -856,7 +890,9 @@
 
 
 
-        <p>Settings class for the application.</p>
+        <p>Configuration for python-package-template.</p>
+<p>Values are read from environment variables and optionally
+overridden by a <code>.env</code> file.</p>
 
 
 
@@ -866,7 +902,7 @@
 
 
               <details class="mkdocstrings-source">
-                <summary>Source code in <code>src/python_package_template/utils.py</code></summary>
+                <summary>Source code in <code>src/python_package_template/settings.py</code></summary>
                 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
@@ -877,8 +913,24 @@
 <span class="normal">19</span>
 <span class="normal">20</span>
 <span class="normal">21</span>
-<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Settings</span><span class="p">(</span><span class="n">BaseSettings</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Settings class for the application.&quot;&quot;&quot;</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ApplicationSettings</span><span class="p">(</span><span class="n">BaseSettings</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Configuration for python-package-template.</span>
+
+<span class="sd">    Values are read from environment variables and optionally</span>
+<span class="sd">    overridden by a ``.env`` file.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1"># if .env is present, it will override the environment variables</span>
     <span class="n">model_config</span> <span class="o">=</span> <span class="n">SettingsConfigDict</span><span class="p">(</span><span class="n">env_file</span><span class="o">=</span><span class="s2">&quot;.env&quot;</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
@@ -887,7 +939,15 @@
     <span class="n">EXAMPLE_API_KEY</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">SecretStr</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;the api key&quot;</span><span class="p">)</span>
     <span class="n">EXAMPLE_ENDPOINT</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;the endpoint&quot;</span><span class="p">)</span>
 
-    <span class="n">DEV_MODE</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">logging_level</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span>
+        <span class="n">default</span><span class="o">=</span><span class="s2">&quot;DEBUG&quot;</span><span class="p">,</span>
+        <span class="n">validation_alias</span><span class="o">=</span><span class="n">AliasChoices</span><span class="p">(</span><span class="s2">&quot;LOGGING_LEVEL&quot;</span><span class="p">,</span> <span class="s2">&quot;logging_level&quot;</span><span class="p">),</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Log level (TRACE, DEBUG, INFO, WARNING, ERROR, CRITICAL)&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">model_post_init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">__context</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Called after model initialization.&quot;&quot;&quot;</span>
+        <span class="k">pass</span>
 </code></pre></div></td></tr></table></div>
               </details>
 
@@ -903,6 +963,33 @@
 
 
 
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="src.python_package_template.settings.ApplicationSettings.model_post_init" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">model_post_init</span><span class="p">(</span><span class="n">__context</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Called after model initialization.</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/python_package_template/settings.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">model_post_init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">__context</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Called after model initialization.&quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
 
 
 
