@@ -514,6 +514,19 @@ wheels = [
 ]
 
 [[package]]
+name = "mkdocs-literate-nav"
+version = "0.6.3"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "mkdocs" },
+    { name = "properdocs" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/01/af/dd3776a7a713f798f79bec7eb9c661d5cfb83ddc17d9a3667595e53e1559/mkdocs_literate_nav-0.6.3.tar.gz", hash = "sha256:edbaca22343f861fe4e34aac47d55a0c9955c640dbf02eea99fe631e914cf9ee", size = 17526, upload-time = "2026-03-16T23:26:50.688Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/4e/2c/bcf1ae903975ad6f169abb05c1eb0f94395478364deb89270cf034081b29/mkdocs_literate_nav-0.6.3-py3-none-any.whl", hash = "sha256:2c421561280fa9184f88cbf399bebbd4cc17ee507e978a31ce11fd6f3aabf233", size = 13355, upload-time = "2026-03-16T23:26:49.562Z" },
+]
+
+[[package]]
 name = "mkdocs-material"
 version = "9.7.6"
 source = { registry = "https://pypi.org/simple" }
@@ -902,7 +915,7 @@ wheels = [
 
 [[package]]
 name = "python-package-template"
-version = "1.0.0"
+version = "1.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "loguru" },
@@ -922,6 +935,7 @@ docs = [
     { name = "mkdocs" },
     { name = "mkdocs-exclude" },
     { name = "mkdocs-gen-files" },
+    { name = "mkdocs-literate-nav" },
     { name = "mkdocs-material" },
     { name = "mkdocs-mermaid2-plugin" },
     { name = "mkdocs-same-dir" },
@@ -948,6 +962,7 @@ docs = [
     { name = "mkdocs", specifier = ">=1.6.1,<1.6.2" },
     { name = "mkdocs-exclude", specifier = ">=1.0.0,<1.0.3" },
     { name = "mkdocs-gen-files", specifier = ">=0.5.0,<0.7.0" },
+    { name = "mkdocs-literate-nav", specifier = ">=0.6.0,<0.6.4" },
     { name = "mkdocs-material", specifier = ">=9.5.41,<9.7.7" },
     { name = "mkdocs-mermaid2-plugin", specifier = ">=1.1.1,<1.2.4" },
     { name = "mkdocs-same-dir", specifier = ">=0.1.0,<0.1.6" },

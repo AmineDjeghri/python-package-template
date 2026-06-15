@@ -1,6 +1,6 @@
 <div align="center">
 
-  <img src="./assets/icon.svg" width="200" />
+  <img src="docs/images/logo.svg" width="200" />
 
   <h1>Python Package Template</h1>
 
@@ -35,7 +35,7 @@ It contains the following parts :
 
 
 <div style="text-align: center;">
-    <img src="assets/img.png" alt="site-img" width="800" style="display: block; margin: 0 auto; border: 2px solid grey;" />
+    <img src="docs/images/img.png" alt="site-img" width="800" style="display: block; margin: 0 auto; border: 2px solid grey;" />
 </div>
 
 ## 👥  Authors
