@@ -32,7 +32,8 @@ docs = [
     "mkdocs-gen-files>=0.5.0,<0.7.0",
     "mkdocstrings-python>=2.0.0,<2.0.4",
     "mkdocs-same-dir>=0.1.0,<0.1.6",
-    "mkdocs-exclude>=1.0.0,<1.0.3"
+    "mkdocs-exclude>=1.0.0,<1.0.3",
+    "mkdocs-literate-nav>=0.6.0,<0.6.4",
 ]
 
 
@@ -63,6 +64,7 @@ lint.pydocstyle.convention = "google"
 
 # python-semantic-release configuration
 [tool.semantic_release]
+commit_parser = "scripts.emoji_commit_parser:EmojiAngularParser"
 version_toml = ["pyproject.toml:project.version"]
 version_pattern = "v(?P<version>\\d+\\.\\d+\\.\\d+(?:[-.]\\w+)?)"  # matches v1.0.0, v1.0.0-rc.1, etc.
 upload_to_vcs_release = false  # Semantic-release automatically creates GitHub releases. Publication is handled by main-release.yml and dev-release.yml
