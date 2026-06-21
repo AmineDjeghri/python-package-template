@@ -26,12 +26,13 @@ else
 	fi
 endif
 
-install: install-uv ## Install dependencies using uv
-	@echo "Installing dependencies (required and docs)..."
-	@$(UV) sync
+install-dev: ## Install all dev dependencies
+	@echo "${YELLOW}=========> Installing dependencies...\n  \
+	 Development dependencies (dev & docs) will be installed by install-dev.${NC}"
+	@$(UV) sync --all-groups
 	@echo "${GREEN}Dependencies installed.${NC}"
 
-install-dev: install-uv ## Install dev dependencies using uv
-	@echo "${YELLOW}=========> Installing dev dependencies (required, dev and docs)...${NC}"
+install-prod: ## Install prod dependencies only
+	@echo "${YELLOW}=========> Installing dependencies (PROD)...${NC}"
 	@$(UV) sync
-	@echo "${GREEN}Dev dependencies installed.${NC}"
+	@echo "${GREEN}Dependencies installed.${NC}"
