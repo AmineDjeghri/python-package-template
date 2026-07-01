@@ -17,7 +17,6 @@
 [![macOS](https://img.shields.io/badge/macOS-000000?logo=apple&logoColor=F0F0F0)](#)
 
 [![Style: Ruff](https://img.shields.io/badge/style-ruff-41B5BE?style=flat)](https://github.com/charliermarsh/ruff)
-[![MkDocs](https://img.shields.io/badge/MkDocs-526CFE?logo=materialformkdocs&logoColor=fff)](#)
 [![mkdocs-material](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/juftin/mkdocs-material/66d65cf/src/templates/assets/images/badge.json)]()
 [![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=fff)](#)
 [![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?logo=github-actions&logoColor=white)](#)
@@ -57,17 +56,13 @@ It contains the following parts :
 - [x] CI/CD pipelines: ``.github/workflows`` for GitHub
 - [x] Local CI/CD pipelines: GitHub Actions using ``github act``
 - [x] GitHub Actions for deploying to GitHub Pages with mkdocs gh-deploy
-- [x] Dependabot for automatic dependency and security updates
+- [x] Renovate ``.github/renovate.json`` for automatic dependency and security updates
+- [x] Issues & PRs templates
 
-**Documentation tools:**
+- **Documentation tools:**
 
 - [x] Wiki creation and setup of documentation website using Mkdocs
 - [x] GitHub Actions for deploying to GitHub Pages with mkdocs gh-deploy
-
-
-Upcoming features:
-- [ ] optimize caching in CI/CD
-- [ ] [Pull requests templates](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/creating-a-pull-request-template-for-your-repository)
 
 
 ## 1. Getting started
