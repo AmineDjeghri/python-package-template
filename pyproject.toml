@@ -5,7 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12,<3.15"
 dependencies = [
-    "pydantic-settings>=2.0.0,<2.15.0",
+    "pydantic-settings>=2.0.0,<2.16.0",
     "loguru>=0.7.3,<0.8.0",
     "pydantic>=2.12.0,<2.15.0",
 ]
@@ -20,14 +20,14 @@ default-groups = []
 dev = [
     "pytest==9.1.1",
     "pytest-asyncio==1.4.0",
-    "pre-commit==4.6.0",
-    "ruff==0.15.22",
+    "pre-commit==4.6.1",
+    "ruff==0.16.2",
     "python-semantic-release==10.6.1",
 ]
 
 docs = [
     "properdocs==1.6.7",
-    "mkdocs-material==9.7.6",
+    "mkdocs-material==9.7.7",
     "mkdocstrings==1.0.6",
     "mkdocs-mermaid2-plugin==1.2.3",
     "mkdocs-gen-files==0.6.1",
