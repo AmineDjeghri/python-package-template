@@ -21,6 +21,8 @@ repos:
       #        exclude: ^requirements/.*$
       - id: trailing-whitespace # This hook trims trailing whitespace
       - id: check-merge-conflict # Check for files that contain merge conflict strings
+      - id: mixed-line-ending # Enforce Unix (LF) line endings
+        args: [ --fix=lf ]
       - id: name-tests-test
         args: [ --pytest-test-first ]
 
