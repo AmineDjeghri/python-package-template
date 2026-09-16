@@ -23,6 +23,7 @@ repos:
       - id: check-merge-conflict # Check for files that contain merge conflict strings
       - id: mixed-line-ending # Enforce Unix (LF) line endings
         args: [ --fix=lf ]
+        exclude: \.(bat|ps1|reg)$ # These stay CRLF per .gitattributes
       - id: name-tests-test
         args: [ --pytest-test-first ]
 
