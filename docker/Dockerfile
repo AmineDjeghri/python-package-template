@@ -2,7 +2,7 @@
 
 
 # Define an argument for the Python version, defaulting to 3.11 if not provided.
-ARG PYTHON_VERSION=3.14
+ARG PYTHON_VERSION=3.15
 FROM python:${PYTHON_VERSION}
 LABEL authors="amine"
 
