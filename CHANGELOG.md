@@ -2,6 +2,25 @@
 
 <!-- version list -->
 
+## v1.2.1 (2026-10-17)
+
+### Bug Fixes
+
+- **deps**: Update python (#85)
+  ([#85](https://github.com/AmineDjeghri/python-package-template/pull/85),
+  [`ced5318`](https://github.com/AmineDjeghri/python-package-template/commit/ced5318eb5f70b424b489e092a142376412be574))
+
+### Documentation
+
+- Create SECURITY.md
+  ([`ddd4469`](https://github.com/AmineDjeghri/python-package-template/commit/ddd44698472e92be432b59a22bd2685f8ea59722))
+
+### Refactoring
+
+- Update documentation deployment to use properdocs and improve example indexing
+  ([`061a4f7`](https://github.com/AmineDjeghri/python-package-template/commit/061a4f7bdb972d0d95bd62f0bf965510673f761c))
+
+
 ## v1.2.0 (2026-06-21)
 
 ### Features

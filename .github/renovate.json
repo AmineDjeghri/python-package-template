@@ -28,6 +28,12 @@
   "rangeStrategy": "widen",
   "packageRules": [
     {
+      "description": "requires-python bumps change the supported range consumers see -> trigger a patch release",
+      "matchManagers": ["pep621"],
+      "matchDepNames": ["python"],
+      "semanticCommitType": "fix"
+    },
+    {
       "description": "Group pre-commit updates (tooling only, no release)",
       "matchManagers": ["pre-commit"],
       "groupName": "pre-commit dependencies",
