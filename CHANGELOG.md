@@ -2,6 +2,20 @@
 
 <!-- version list -->
 
+## v1.3.1 (2026-10-30)
+
+### Bug Fixes
+
+- **ci**: Run the 3.14 job on 3.14.8 so it matches requires-python (#90)
+  ([#90](https://github.com/AmineDjeghri/python-package-template/pull/90),
+  [`f98d70a`](https://github.com/AmineDjeghri/python-package-template/commit/f98d70aa3981bc058351510a088c782831ecbcad))
+
+### Refactoring
+
+- Update Python version requirements and CI configurations
+  ([`622e435`](https://github.com/AmineDjeghri/python-package-template/commit/622e43543564cf1e10d51c0a743a4649aa4835c2))
+
+
 ## v1.3.0 (2026-10-30)
 
 ### Features
