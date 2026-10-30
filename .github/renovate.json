@@ -25,13 +25,28 @@
   },
   "osvVulnerabilityAlerts": true,
   "pinDigests": false,
-  "rangeStrategy": "widen",
   "packageRules": [
     {
-      "description": "requires-python bumps change the supported range consumers see -> trigger a patch release",
+      "description": "Widen Python support after reviewing the CI matrix and all project constraints",
       "matchManagers": ["pep621"],
-      "matchDepNames": ["python"],
-      "semanticCommitType": "fix"
+      "rangeStrategy": "widen",
+      "semanticCommitType": "fix",
+      "matchDepTypes": ["requires-python"],
+      "groupName": "python runtime",
+      "dependencyDashboardApproval": true
+    },
+    {
+      "description": "Keep Python Docker images with supported-runtime updates",
+      "matchManagers": ["dockerfile"],
+      "matchPackageNames": ["python"],
+      "groupName": "python runtime",
+      "semanticCommitType": "fix",
+      "dependencyDashboardApproval": true
+    },
+    {
+      "description": "Preserve compatibility with the full supported Python range",
+      "matchDatasources": ["pypi"],
+      "constraintsFiltering": "strict"
     },
     {
       "description": "Group pre-commit updates (tooling only, no release)",
@@ -50,18 +65,19 @@
       "semanticCommitType": "chore"
     },
     {
-      "description": "Production Python dependency updates -> trigger a patch release so consumers get the new compatibility range",
-      "matchManagers": ["pip", "pep621"],
-      "matchDepTypes": ["dependencies", "project.dependencies"],
+      "description": "Widen library runtime and optional dependency ranges while preserving compatible older versions",
+      "matchManagers": ["pep621"],
+      "matchDepTypes": ["dependencies", "project.dependencies", "project.optional-dependencies"],
       "groupName": "python dependencies",
       "groupSlug": "python",
       "minimumReleaseAge": "7 days",
-      "semanticCommitType": "fix"
+      "semanticCommitType": "fix",
+      "rangeStrategy": "widen"
     },
     {
       "description": "Dev/docs Python dependency updates (dependency-groups) -> tooling only, no release needed",
-      "matchManagers": ["pip", "pep621"],
-      "matchDepTypes": ["devDependencies", "optional-dependencies", "dependency-groups"],
+      "matchManagers": ["pep621"],
+      "matchDepTypes": ["devDependencies", "dependency-groups"],
       "groupName": "python dev dependencies",
       "groupSlug": "python-dev",
       "minimumReleaseAge": "7 days",
@@ -69,12 +85,19 @@
     },
     {
       "description": "Major bumps of production deps need manual review for breaking changes",
-      "matchManagers": ["pip", "pep621"],
-      "matchDepTypes": ["dependencies", "project.dependencies"],
+      "matchManagers": ["pep621"],
+      "matchDepTypes": ["dependencies", "project.dependencies", "project.optional-dependencies"],
       "matchUpdateTypes": ["major"],
       "addLabels": ["needs-breaking-review"],
-      "semanticCommitType": "fix"
+      "semanticCommitType": "fix",
+      "dependencyDashboardApproval": true
     }
   ],
-  "platformAutomerge": false
+  "platformAutomerge": false,
+  "lockFileMaintenance": {
+    "enabled": true
+  },
+  "pre-commit": {
+    "enabled": true
+  }
 }
