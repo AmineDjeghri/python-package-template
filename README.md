@@ -99,6 +99,7 @@ uv pip install "dist/dist/python_package_template-0.1.0-py3-none-any.whl"
 
 ````python
 from python_package_template.example import hello
+
 hello()
 # Output: 2025-01-05 08:05:38.143 | INFO     | python_package_template.example:hello:5 - Hello world
 ````
