@@ -1281,12 +1281,12 @@
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;File not found: </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">. Current directory: </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The file </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2"> does not exist.&quot;</span><span class="p">)</span>
 </span></code></pre></div>
+</li>
+</ul>
 <p>In an <code>except</code> block, <code>logger.exception(...)</code> logs the message and the stack trace. Not
-raising is fine only when the loop must go on.</p>
-</li>
-<li>
-<p>Large data: Polars. CPU-bound work: <code>multiprocessing.Pool.map</code>.</p>
-</li>
+  raising is fine only when the loop must go on.</p>
+<ul>
+<li>Large data: Polars. CPU-bound work: <code>multiprocessing.Pool.map</code>.</li>
 </ul>
 <h2 id="branches-and-pull-requests">Branches and pull requests<a class="headerlink" href="#branches-and-pull-requests" title="Permanent link">&para;</a></h2>
 <ol>
@@ -1295,7 +1295,8 @@ raising is fine only when the loop must go on.</p>
 <li>Open a pull request to <code>dev</code>. Its <strong>title</strong> follows the commit convention below: it becomes the
    squash commit and decides the version.</li>
 <li>When <code>dev</code> is ready, a pull request <code>dev</code> → <code>main</code> releases it.</li>
-<li>After a release on <code>main</code>, merge <code>main</code> back into <code>dev</code> (see <a href="../5.release/#after-a-release-sync-main-into-dev">5. Release</a>).</li>
+<li>After a release on <code>main</code>, merge <code>main</code> back into <code>dev</code>
+   (see <a href="../5.release/#after-a-release-sync-main-into-dev">5. Release</a>).</li>
 </ol>
 <table>
 <thead>
@@ -1325,8 +1326,7 @@ raising is fine only when the loop must go on.</p>
 </table>
 <p>Never edit <code>project.version</code> or create a tag by hand: semantic-release does both.</p>
 <h2 id="commit-convention">Commit convention<a class="headerlink" href="#commit-convention" title="Permanent link">&para;</a></h2>
-<p><code>[emoji] &lt;type&gt;[(&lt;scope&gt;)][!]: &lt;description&gt;</code>, the emoji is optional
-(<a href="https://gitmoji.dev/">Gitmoji</a>).</p>
+<p><code>[emoji] &lt;type&gt;[(&lt;scope&gt;)][!]: &lt;description&gt;</code>, the emoji is optional (<a href="https://gitmoji.dev/">Gitmoji</a>).</p>
 <table>
 <thead>
 <tr>
