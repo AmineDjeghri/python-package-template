@@ -1395,6 +1395,17 @@
 security fixes are not grouped and open at once. PyPI dependencies are ranges in <code>pyproject.toml</code>,
 locked by <code>uv.lock</code>. Review every Renovate pull request before merging; after merging one, wait
 for the others to rebase.</p>
+<ol>
+<li>Keep <code>requires-python</code> at <code>&gt;=3.12,&lt;=3.14.8</code> in every package manifest. Write code compatible
+   with Python 3.12; CI runs <code>make test-all</code> on Python 3.12, 3.13 and 3.14.</li>
+<li>Renovate widens the Python upper bound while preserving the 3.12 minimum. Python Docker
+   updates share the runtime update group; review the resulting supported range before merging.</li>
+<li>PyPI updates use strict Python compatibility filtering. Weekly lockfile maintenance refreshes
+   versions already permitted by dependency ranges; review the lockfile and CI results too.</li>
+<li>Renovate updates dependency files, GitHub Actions and pre-commit revisions; update README
+   and developer documentation when the supported Python range changes. Docs are not rewritten
+   automatically.</li>
+</ol>
 
 
 
