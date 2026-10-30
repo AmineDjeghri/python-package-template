@@ -46,7 +46,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.12", "3.13", "3.14"]
+        # The 3.14 entry is pinned to the patch allowed by `requires-python`
+        # (`<=3.14.8`): a bare "3.14" resolves to the newest patch, which the
+        # project constraint rejects. Bump it when Renovate widens the bound.
+        python-version: ["3.12", "3.13", "3.14.8"]
     env:
       UV_PYTHON: ${{ matrix.python-version }}
     timeout-minutes: 5
