@@ -12,7 +12,7 @@
 </div>
 <div align="center">
 
-[![python](https://img.shields.io/badge/python-3.11+-blue?logo=python)](https://www.python.org/downloads/release/python-3110/)
+[![python](https://img.shields.io/badge/python-3.12--3.14.8-blue?logo=python)](https://www.python.org/downloads/release/python-3120/)
 [![Debian](https://img.shields.io/badge/Debian-A81D33?logo=debian&logoColor=fff)](https://www.debian.org/)
 [![macOS](https://img.shields.io/badge/macOS-000000?logo=apple&logoColor=F0F0F0)](https://www.apple.com/macos/)
 
@@ -83,7 +83,7 @@ The following files are used in the contribution pipeline:
 ### 1.1.  Local Prerequisites
 
 - Linux, macOS or Windows, with make, bash and git
-- [uv](https://docs.astral.sh/uv/) (`make install-uv`); it installs Python 3.12+ (`requires-python`)
+- [uv](https://docs.astral.sh/uv/) (`make install-uv`); it installs Python 3.12–3.14.8 (`requires-python`)
 
 ### ⚙️ Steps for Installation (Users)
 
