@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.3.0 (2026-10-30)
+
+### Features
+
+- Enhance Makefiles with color-coded output for better visibility
+  ([`1da1602`](https://github.com/AmineDjeghri/python-package-template/commit/1da16025eee44ca4f5503a6fda637ba5bc40ddb2))
+
+
 ## v1.2.1 (2026-10-17)
 
 ### Bug Fixes
