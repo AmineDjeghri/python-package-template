@@ -82,8 +82,8 @@ The following files are used in the contribution pipeline:
 
 ### 1.1.  Local Prerequisites
 
-- Ubuntu 22.04 or MacOS
-- Python 3.11
+- Linux, macOS or Windows, with make, bash and git
+- [uv](https://docs.astral.sh/uv/) (`make install-uv`); it installs Python 3.12+ (`requires-python`)
 
 ### ⚙️ Steps for Installation (Users)
 
@@ -109,8 +109,27 @@ You can check the documentation (website), or the ``notebook.ipynb``.
 
 ### 1.3 ⚙️ Steps for Installation (Contributors and maintainers)
 
-Check the [CONTRIBUTING.md](CONTRIBUTING.md) file for installation instructions
+```bash
+make install-dev && make pre-commit-install && make test-all
+```
 
 ## 2. Contributing
 
-Check the [CONTRIBUTING.md](CONTRIBUTING.md) file for more information.
+Start with [CONTRIBUTING.md](CONTRIBUTING.md), then the developer guide:
+
+| Page | Content |
+| --- | --- |
+| [1. Setup](docs/developer/1.setup.md) | prerequisites, install, GitHub login, Docker, IDE |
+| [2. Project structure](docs/developer/2.project-structure.md) | layout, where to add a module, a setting, an example |
+| [3. Conventions](docs/developer/3.conventions.md) | code, logging, branches, commit convention, secrets, Renovate |
+| [4. Testing](docs/developer/4.testing.md) | `make test-all`, what `make pre-commit` checks, CI |
+| [5. Release](docs/developer/5.release.md) | by hand or by GitHub Actions, guards, credentials |
+| [6. Fork this template](docs/developer/6.fork.md) | what to rename |
+
+## Comprehensive software validation
+
+`make test-all` is the required comprehensive software check for users, developers and CI.
+This template currently has no integration suite or live-service credential requirement. Future
+integration suites must join this command; see [the testing guide](docs/developer/4.testing.md) for the current suite scope. A focused `make test-local` pass does not
+establish full validation. Missing services or skipped integration must be reported as incomplete.
+Coverage and artifact/runtime checks remain explicit alongside this command.
