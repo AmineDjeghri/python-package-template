@@ -1,20 +1,23 @@
-# Testing targets
-# This file contains all testing-related targets
-
-.PHONY: test-installation test
-
 N ?= 4
 
-test-installation: ## Test installation
-	@echo "${YELLOW}=========> Testing installation...${NC}"
+.PHONY: check test-local test-all test-unit test-smoke-cli test-installation
+
+check: ## Run static checks, comprehensive software validation and strict docs
+	@$(MAKE) pre-commit
+	@$(MAKE) test-all
+	@$(MAKE) docs-build
+
+test-local: test-unit ## Run all self-contained software tests
+
+test-all: ## Run every existing software suite (no integration tests exist yet)
+	$(if $(strip $(ARGS)),$(error test-all requires the full suite; use a focused target for ARGS))
+	@$(MAKE) test-local
+
+test-unit: ## Run package unit tests with pytest (N=4 workers; empty selection fails)
+	@$(UV) run pytest tests --numprocesses=$(N) $(ARGS)
+
+test-smoke-cli: ## Run hello from the development environment (does not validate a built wheel)
 	@$(UV) run --directory . hello
 
-test: ## Run tests with pytest (parallel via pytest-xdist). Usage: make test [N=<num_workers>] (default: 4)
-	@echo "${YELLOW}Running tests with $(N) worker(s)...${NC}"
-	@set -e; \
-	$(UV) run pytest tests --numprocesses=$(N) || rc=$$?; \
-	if [ "$${rc:-0}" -eq 5 ]; then \
-		echo "${YELLOW}No tests collected (pytest exit code 5) — treating as success.${NC}"; \
-	else \
-		exit "$${rc:-0}"; \
-	fi
+# Compatibility name; use test-smoke-cli.
+test-installation: test-smoke-cli
