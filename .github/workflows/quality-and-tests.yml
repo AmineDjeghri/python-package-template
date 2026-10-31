@@ -35,6 +35,13 @@ jobs:
           make pre-commit
           echo "::endgroup::"
 
+      # `uv sync` in the release job rewrites uv.lock when pyproject drifted, which trips the
+      # "uncommitted changes" guard in `make release-version` and blocks the release. Catch the
+      # drift on the pull request instead.
+      - name: Verify the lockfile matches pyproject
+        shell: bash
+        run: uv lock --check
+
       - name: Cleanup Artifacts
         if: always()
         uses: ./.github/actions/cleanup-artifacts

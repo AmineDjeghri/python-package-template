@@ -35,6 +35,14 @@ release-version: ## semantic-release on main/dev: version, CHANGELOG, commit, ta
 	GIT_CONFIG_COUNT=1 GIT_CONFIG_KEY_0=core.hooksPath GIT_CONFIG_VALUE_0=/dev/null \
 		PYTHONPATH=. $(UV) run --group dev semantic-release -v version || exit 1; \
 	printf '%b\n' "${GREEN}Released v$$version${NC}"; \
+	$(UV) lock --quiet || exit 1; \
+	if [ -n "$$(git status --porcelain uv.lock)" ]; then \
+		git add uv.lock; \
+		GIT_CONFIG_COUNT=1 GIT_CONFIG_KEY_0=core.hooksPath GIT_CONFIG_VALUE_0=/dev/null \
+			git commit -q -m "🔧 chore(lock): sync uv.lock with v$$version [skip ci]" || exit 1; \
+		git push -q origin "HEAD:$$branch" || exit 1; \
+		printf '%b\n' "${YELLOW}uv.lock carried the previous version: synced in a [skip ci] follow-up commit${NC}"; \
+	fi; \
 	[ -z "$$GITHUB_OUTPUT" ] || { echo "released=true"; echo "version=$$version"; } >> "$$GITHUB_OUTPUT"
 
 release-assets: ## Attach dist/ wheel + sdist of the current version to the GitHub release v<version>
