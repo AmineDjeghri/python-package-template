@@ -1,5 +1,13 @@
 # Python Package Template
 
+[![python](https://img.shields.io/badge/python-3.12--3.14.8-blue?logo=python)](https://www.python.org/downloads/)
+[![Debian](https://img.shields.io/badge/Debian-A81D33?logo=debian&logoColor=fff)](https://www.debian.org/)
+[![macOS](https://img.shields.io/badge/macOS-000000?logo=apple&logoColor=F0F0F0)](https://www.apple.com/macos/)
+[![Style: Ruff](https://img.shields.io/badge/style-ruff-41B5BE?style=flat)](https://github.com/astral-sh/ruff)
+[![mkdocs-material](https://img.shields.io/badge/Material_for_MkDocs-526CFE?logo=materialformkdocs&logoColor=white)](https://squidfunk.github.io/mkdocs-material/)
+[![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=fff)](https://www.docker.com/)
+[![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?logo=github-actions&logoColor=white)](https://github.com/features/actions)
+
 <img src="docs/images/logo.svg" alt="Python Package Template logo" width="160" />
 
 A Python library template with uv, Pydantic settings, loguru, pytest, Ruff, Git hooks,
