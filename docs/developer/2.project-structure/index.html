@@ -472,6 +472,10 @@
         
       
         
+          
+        
+      
+        
       
         
       
@@ -492,8 +496,9 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
-            
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../tests/" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
@@ -507,8 +512,14 @@
   
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
@@ -722,6 +733,8 @@
     </li>
   
 
+              
+            
               
             
               
@@ -1223,26 +1236,31 @@
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>src/python_package_template/
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  example.py            example module, console script `hello`
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  settings.py           ApplicationSettings (pydantic-settings) and the loguru logger
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>tests/                  one test file per module (test_&lt;module&gt;.py)
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>docs/
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>  developer/            this guide
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>  examples/             example scripts, rendered as pages by scripts/gen_example_pages.py
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>  images/               logo and screenshots
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>scripts/
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>  emoji_commit_parser.py  semantic-release parser that accepts a leading emoji
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>  gen_doc_stubs.py        API reference pages (mkdocstrings) from src/
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>  gen_example_pages.py    pages from docs/examples/*.py
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>makefiles/              one .mk per concern, included by Makefile
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>.github/                workflows, composite actions, Renovate, issue and PR templates
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>Dockerfile              development / production container
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>properdocs.yml          documentation site (MkDocs Material)
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>CHANGELOG.md            written by semantic-release, never by hand
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>tests/
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>  README.md             test map and commands
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>  unit/                 self-contained package tests
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    docs/               API reference generation
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    release/            artifacts, release guards and upload recovery
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>docs/
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>  developer/            this guide
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>  examples/             example scripts, rendered as pages by scripts/gen_example_pages.py
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>  images/               logo and screenshots
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>scripts/
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>  emoji_commit_parser.py  semantic-release parser that accepts a leading emoji
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>  gen_doc_stubs.py        API reference pages from package/workspace source directories
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>  release_artifacts.py    Git release tags and complete wheel/sdist checks
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>  gen_example_pages.py    pages from docs/examples/*.py
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>makefiles/              one .mk per concern, included by Makefile
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>.github/                workflows, composite actions, Renovate, issue and PR templates
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>Dockerfile              development / production container
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>properdocs.yml          documentation site (MkDocs Material)
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>CHANGELOG.md            written by semantic-release, never by hand
 </span></code></pre></div>
 <h2 id="add-a-module">Add a module<a class="headerlink" href="#add-a-module" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Add <code>src/python_package_template/&lt;module&gt;.py</code>, with Google-style docstrings: they become the
    API reference page automatically.</li>
-<li>Add <code>tests/test_&lt;module&gt;.py</code>.</li>
+<li>Add <code>tests/unit/test_&lt;module&gt;.py</code>, or use a responsibility subfolder for tooling tests.</li>
 <li>Log with the package logger: <code>from python_package_template.settings import logger</code>.</li>
 </ol>
 <h2 id="add-a-setting">Add a setting<a class="headerlink" href="#add-a-setting" title="Permanent link">&para;</a></h2>

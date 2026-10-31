@@ -472,6 +472,10 @@
         
       
         
+          
+        
+      
+        
       
         
       
@@ -492,8 +496,9 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
-            
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../tests/" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
@@ -507,8 +512,14 @@
   
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
@@ -744,6 +755,8 @@
     </li>
   
 
+              
+            
               
             
               
@@ -1405,6 +1418,8 @@ for the others to rebase.</p>
 <li>Renovate updates dependency files, GitHub Actions and pre-commit revisions; update README
    and developer documentation when the supported Python range changes. Docs are not rewritten
    automatically.</li>
+<li>Renovate tracks the Node pin used by pre-commit. Stable updates wait seven days and use
+   <code>chore</code>; major LTS upgrades require dependency dashboard approval.</li>
 </ol>
 
 

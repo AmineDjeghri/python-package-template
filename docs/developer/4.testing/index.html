@@ -16,7 +16,7 @@
         <link rel="prev" href="../3.conventions/">
       
       
-        <link rel="next" href="../5.release/">
+        <link rel="next" href="../../../tests/">
       
       
         
@@ -472,6 +472,10 @@
         
       
         
+          
+        
+      
+        
       
         
       
@@ -492,8 +496,9 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
-            
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../tests/" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
@@ -507,8 +512,14 @@
   
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
@@ -715,6 +726,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#release-regression-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Release regression checks
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -722,6 +744,8 @@
     </li>
   
 
+              
+            
               
             
               
@@ -1194,6 +1218,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#release-regression-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Release regression checks
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1223,8 +1258,8 @@ Run it before reporting that the software is fully validated. It runs the self-c
 then real-service integration tests where a suite exists. <code>make test-local</code> remains a focused diagnostic
 shortcut; passing it does not establish full validation. The ambiguous <code>make test</code> target is removed.</p>
 <p>Keep static quality, coverage reporting and artifact/runtime checks explicit alongside software tests.
-<code>make check</code> combines static checks, <code>make test-all</code> and strict documentation validation. It can call
-real services. <code>make help</code> lists focused commands and their requirements.</p>
+<code>make check</code> runs static hooks (including strict documentation) once, then <code>make test-all</code>.
+It can call real services when an integration suite exists. <code>make help</code> lists focused commands and their requirements.</p>
 <p>The comprehensive command does not accept per-suite <code>ARGS</code> filters; use focused targets for selected
 tests. Worker-count options remain available.</p>
 <h2 id="required-checks">Required checks<a class="headerlink" href="#required-checks" title="Permanent link">&para;</a></h2>
@@ -1244,9 +1279,11 @@ Build-package and clean-environment installation checks remain separate from com
 complete or incomplete software validation, including setup failures where tests never start.</p>
 <h2 id="writing-tests">Writing tests<a class="headerlink" href="#writing-tests" title="Permanent link">&para;</a></h2>
 <ul>
-<li>One file per module: <code>tests/test_&lt;module&gt;.py</code> (the <code>name-tests-test</code> hook checks it).</li>
+<li>Use <code>tests/unit/test_&lt;module&gt;.py</code> for package tests and <code>tests/unit/docs/</code> or
+  <code>tests/unit/release/</code> for tooling. See the <a href="../../../tests/">test map</a>.</li>
 <li>Tests run in parallel: no shared state. Use <code>tmp_path</code> for files and <code>monkeypatch</code> for
-  environment variables (see <code>tests/test_settings.py</code>).</li>
+  environment variables (see <code>tests/unit/test_settings.py</code>). Settings tests disable local <code>.env</code>
+  loading and import the application from an isolated working directory.</li>
 <li>Async tests: <code>pytest-asyncio</code> in strict mode, mark them with <code>@pytest.mark.asyncio</code>.</li>
 </ul>
 <h2 id="what-make-pre-commit-checks">What <code>make pre-commit</code> checks<a class="headerlink" href="#what-make-pre-commit-checks" title="Permanent link">&para;</a></h2>
@@ -1304,12 +1341,19 @@ complete or incomplete software validation, including setup failures where tests
 <td>PR title check, <code>make pre-commit</code>, <code>make test-all</code></td>
 </tr>
 <tr>
-<td>the release workflows</td>
+<td>the shared release workflow</td>
 <td>push to <code>dev</code> / <code>main</code></td>
 <td>the same checks first, then the release (<a href="../5.release/">5. Release</a>)</td>
 </tr>
 </tbody>
 </table>
+<h2 id="release-regression-checks">Release regression checks<a class="headerlink" href="#release-regression-checks" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Run <code>make test-unit</code> for release guards, prerelease filenames, incomplete artifacts, upload
+   recovery and build failures. Git, GitHub and version commands use isolated test substitutes.</li>
+<li>Run <code>make docs-build</code> to verify the API reference for every package.</li>
+<li>Run <code>make build-package</code> separately to build and verify the complete wheel/sdist set.</li>
+</ol>
 
 
 

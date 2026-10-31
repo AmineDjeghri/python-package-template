@@ -464,6 +464,10 @@
         
       
         
+          
+        
+      
+        
       
         
       
@@ -481,8 +485,9 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
-            
+          <div class="md-nav__link md-nav__container">
+            <a href="../tests/" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
@@ -496,8 +501,14 @@
   
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
@@ -620,6 +631,8 @@
     </li>
   
 
+              
+            
               
             
               
@@ -1130,9 +1143,9 @@ documentation on GitHub Pages; there is no package index. Developer docs: <code>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>make<span class="w"> </span>run<span class="w">                  </span><span class="c1"># run the example</span>
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>make<span class="w"> </span>build-package<span class="w">        </span><span class="c1"># dist/ wheel + sdist</span>
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>make<span class="w"> </span>deploy-doc-local<span class="w">     </span><span class="c1"># build and serve the documentation</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>make<span class="w"> </span>release-version<span class="w">      </span><span class="c1"># semantic-release: version, CHANGELOG, tag, GitHub release (main/dev, clean, in sync)</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>make<span class="w"> </span>release-version<span class="w">      </span><span class="c1"># build packages, semantic-release: version, CHANGELOG, tag, GitHub release (main/dev, clean, in sync)</span>
 </span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>make<span class="w"> </span>release-assets<span class="w">       </span><span class="c1"># attach dist/ to the GitHub release</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>make<span class="w"> </span>release<span class="w">              </span><span class="c1"># release-version + build-package + release-assets (manual release)</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>make<span class="w"> </span>release<span class="w">              </span><span class="c1"># release-version + verified release-assets (manual release)</span>
 </span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>make<span class="w"> </span>deploy-doc-gh<span class="w">        </span><span class="c1"># documentation to GitHub Pages</span>
 </span></code></pre></div>
 <h2 id="rules">Rules<a class="headerlink" href="#rules" title="Permanent link">&para;</a></h2>

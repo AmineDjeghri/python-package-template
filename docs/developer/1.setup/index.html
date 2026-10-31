@@ -472,6 +472,10 @@
         
       
         
+          
+        
+      
+        
       
         
       
@@ -492,8 +496,9 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
-            
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../tests/" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
@@ -507,8 +512,14 @@
   
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
@@ -664,6 +675,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#tool-only-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool-only environments
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -755,6 +777,8 @@
     </li>
   
 
+              
+            
               
             
               
@@ -1260,6 +1284,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#tool-only-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool-only environments
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1377,6 +1412,13 @@ integration suites must join this command; see <a href="../4.testing/">the testi
 <code>make test-local</code> pass does not
 establish full validation. Missing services or skipped integration must be reported as incomplete.
 Coverage and artifact/runtime checks remain explicit alongside this command.</p>
+<h2 id="tool-only-environments">Tool-only environments<a class="headerlink" href="#tool-only-environments" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Use <code>make install-tools</code> for quality checks and documentation without application dependencies.</li>
+<li>Use <code>make install-release</code> for packaging and release tools only.</li>
+<li>Run <code>make pre-commit-install</code> once per checkout; checks and docs commands do not reinstall hooks
+   or dependencies. <code>make install-dev</code> remains the full application/test environment.</li>
+</ol>
 
 
 
