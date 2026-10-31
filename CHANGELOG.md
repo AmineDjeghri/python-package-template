@@ -2,6 +2,15 @@
 
 <!-- version list -->
 
+## v1.3.3 (2026-10-31)
+
+### Bug Fixes
+
+- Update Python version requirements and CI configurations (#94)
+  ([#94](https://github.com/AmineDjeghri/python-package-template/pull/94),
+  [`80b2048`](https://github.com/AmineDjeghri/python-package-template/commit/80b2048ff7dfcf129a6e376a61c8382adc9e3523))
+
+
 ## v1.3.2 (2026-10-31)
 
 ### Bug Fixes
