@@ -21,8 +21,6 @@ With Make, Bash, Git and uv available:
 git clone https://github.com/AmineDjeghri/python-package-template.git
 cd python-package-template
 make install-dev
-make pre-commit-install
-make check
 make run
 ```
 
