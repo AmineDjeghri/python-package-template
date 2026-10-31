@@ -713,21 +713,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#release-sequence" class="md-nav__link">
+  <a href="#automatic-release" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Release sequence
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#versions-and-artifacts" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Versions and artifacts
+        Automatic release
       
     </span>
   </a>
@@ -743,34 +732,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="By hand">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#guards" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Guards
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#credentials" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Credentials
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -785,10 +746,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#github-actions" class="md-nav__link">
+  <a href="#credentials" class="md-nav__link">
     <span class="md-ellipsis">
       
-        GitHub Actions
+        Credentials
       
     </span>
   </a>
@@ -796,10 +757,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#repository-settings" class="md-nav__link">
+  <a href="#release-sequence-and-safeguards" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Repository settings
+        Release sequence and safeguards
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repository-settings-once" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repository settings (once)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#after-a-release-sync-main-into-dev" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        After a release: sync main into dev
       
     </span>
   </a>
@@ -1214,21 +1197,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#release-sequence" class="md-nav__link">
+  <a href="#automatic-release" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Release sequence
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#versions-and-artifacts" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Versions and artifacts
+        Automatic release
       
     </span>
   </a>
@@ -1244,34 +1216,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="By hand">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#guards" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Guards
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#credentials" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Credentials
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1286,10 +1230,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#github-actions" class="md-nav__link">
+  <a href="#credentials" class="md-nav__link">
     <span class="md-ellipsis">
       
-        GitHub Actions
+        Credentials
       
     </span>
   </a>
@@ -1297,10 +1241,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#repository-settings" class="md-nav__link">
+  <a href="#release-sequence-and-safeguards" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Repository settings
+        Release sequence and safeguards
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repository-settings-once" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repository settings (once)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#after-a-release-sync-main-into-dev" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        After a release: sync main into dev
       
     </span>
   </a>
@@ -1331,189 +1297,80 @@
 
 
 <h1 id="5-release">5. Release<a class="headerlink" href="#5-release" title="Permanent link">&para;</a></h1>
-<p>Publish verified Python packages and documentation through the same Make targets locally and in CI.</p>
-<h2 id="release-sequence">Release sequence<a class="headerlink" href="#release-sequence" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Run <code>make test-all</code> and <code>make pre-commit</code> against the source commit.</li>
-<li><code>make release-version</code> checks the branch, clean tree, origin and credentials.</li>
-<li>Semantic-release updates versions and the changelog, then runs its build hook:
-   <code>uv lock --upgrade-package "$PACKAGE_NAME" &amp;&amp; git add uv.lock &amp;&amp; make build-package</code>.</li>
-<li>Only after every package has a wheel and sdist does semantic-release commit, tag, push
-   and create the GitHub release.</li>
-<li><code>make release-assets</code> uploads the complete artifact set. On <code>main</code>, CI deploys documentation
-   from the exact release tag.</li>
-</ol>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>flowchart TD
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    checks[&quot;Validate source&quot;] --&gt; prepare[&quot;Prepare versions and changelog&quot;]
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    prepare --&gt; build[&quot;Refresh lock and build all packages&quot;]
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    build --&gt; publish[&quot;Commit, tag, push and GitHub release&quot;]
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    publish --&gt; assets[&quot;Upload verified wheels and sdists&quot;]
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    assets --&gt; docs[&quot;main only: deploy docs from release tag&quot;]
-</span></code></pre></div>
-<h2 id="versions-and-artifacts">Versions and artifacts<a class="headerlink" href="#versions-and-artifacts" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Branch</th>
-<th>Commit</th>
-<th>Result</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>dev</code></td>
-<td><code>feat</code>, <code>fix</code>, <code>perf</code></td>
-<td>release candidate, such as <code>v2.0.1-rc.1</code></td>
-</tr>
-<tr>
-<td><code>main</code></td>
-<td><code>feat</code>, <code>fix</code>, <code>perf</code></td>
-<td>stable release and documentation</td>
-</tr>
-<tr>
-<td>either</td>
-<td><code>feat!</code> or <code>BREAKING CHANGE</code></td>
-<td>next major version</td>
-</tr>
-<tr>
-<td>either</td>
-<td>only <code>docs</code>, <code>chore</code>, <code>ci</code>, <code>style</code>, <code>refactor</code>, <code>build</code>, <code>test</code></td>
-<td>no new release</td>
-</tr>
-</tbody>
-</table>
-<p>Versions, tags and <code>CHANGELOG.md</code> belong to semantic-release. All workspace package versions
-must equal the root version.</p>
-<p><code>scripts/release_artifacts.py</code> keeps the Git tag <code>v2.0.1-rc.1</code> separate from the normalized
-Python filename version <code>2.0.1rc1</code>. It requires exactly one wheel and one sdist per package
-listed in <code>PACKAGE_PROJECTS</code> in <code>makefiles/common.mk</code>.</p>
+<p>Publish Python packages to GitHub Releases and documentation to GitHub Pages.</p>
+<h2 id="automatic-release">Automatic release<a class="headerlink" href="#automatic-release" title="Permanent link">&para;</a></h2>
+<p>Merge a releasable change to <code>dev</code> for a release candidate, or promote <code>dev</code> to <code>main</code> for a stable
+release. <code>release.yml</code> validates the source, versions and builds every package, then uploads artifacts.
+A tagged stable release also deploys docs from that tag. Docs-only commits do not publish docs.
+Versions come from <a href="../3.conventions/#commit-convention">Conventional Commits</a>;
+never edit versions or create tags manually.</p>
 <h2 id="by-hand">By hand<a class="headerlink" href="#by-hand" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Install dependencies with <code>make install-dev</code>; a release-only environment can use
-   <code>make install-release</code>.</li>
-<li>Run <code>gh auth login</code> once.</li>
-<li>Check out a clean, up-to-date <code>main</code> or <code>dev</code>.</li>
-<li>Run <code>make release</code> after software validation.</li>
-<li>For a stable release, run <code>make deploy-doc-gh</code> with docs dependencies already installed
-   (<code>make install-dev</code> or <code>make install-tools</code>).</li>
-</ol>
-<p><code>make release</code> stops when there is no new release and HEAD is not already tagged.
-It reuses verified artifacts built by semantic-release, or builds missing artifacts before
-uploading. Build and upload remain sequential under parallel Make.</p>
-<h3 id="guards">Guards<a class="headerlink" href="#guards" title="Permanent link">&para;</a></h3>
+<p>Use a clean <code>main</code> (stable) or <code>dev</code> (prerelease), synchronized with origin.
+Complete <a href="../1.setup/">setup</a> and <a href="#credentials">GitHub login</a>, then run:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>make<span class="w"> </span>check
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>make<span class="w"> </span>release
+</span></code></pre></div>
+<p>The release command versions, builds and uploads the full wheel/sdist set. It changes Git and GitHub;
+coding agents need explicit per-action approval.
+For a stable manual release, publish docs separately from the clean released tag:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>make<span class="w"> </span>deploy-doc-gh
+</span></code></pre></div>
+<p>That command pushes <code>gh-pages</code> and requires separate authorization.</p>
+<h2 id="retry-an-interrupted-release">Retry an interrupted release<a class="headerlink" href="#retry-an-interrupted-release" title="Permanent link">&para;</a></h2>
+<p>Retry the failed CI job if its tested source still matches the release. Locally, rerun <code>make release</code>
+on the matching clean release branch. To upload from a clean checkout of the exact release tag:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>make<span class="w"> </span>build-package
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>make<span class="w"> </span>release-assets
+</span></code></pre></div>
+<p>If newer application commits exist, let their own workflow validate/release them.
+Never rebuild an older release from later source. <code>release-assets</code> can create a missing GitHub release
+and replaces same-named attachments; it does not publish to a package index.</p>
+<h2 id="credentials">Credentials<a class="headerlink" href="#credentials" title="Permanent link">&para;</a></h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>gh<span class="w"> </span>auth<span class="w"> </span>login
+</span></code></pre></div>
+<p>Credentials resolve from <code>GH_TOKEN</code> (environment or local <code>.env</code>), then gh login, then a hidden
+terminal prompt. <code>release-assets</code> uses the token or gh login. CI supplies its automatic GitHub token;
+never print credentials. A tooling-only environment can use <code>make install-release</code>;
+docs need <code>make install-tools</code> or <code>make install-dev</code>.</p>
+<h2 id="release-sequence-and-safeguards">Release sequence and safeguards<a class="headerlink" href="#release-sequence-and-safeguards" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Check</th>
+<th>Target / stage</th>
 <th>Behavior</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>branch is <code>main</code> or <code>dev</code></td>
-<td>other branches are refused</td>
+<td><code>make release-version</code></td>
+<td>Require <code>main</code>/<code>dev</code>, a clean tree and HEAD equal to fetched origin</td>
 </tr>
 <tr>
-<td>working tree is clean</td>
-<td>commit or stash changes first</td>
+<td>Semantic-release build hook</td>
+<td><code>uv lock --upgrade-package "$PACKAGE_NAME" &amp;&amp; git add uv.lock &amp;&amp; make build-package</code>; build failure stops commit/tag/publication</td>
 </tr>
 <tr>
-<td>HEAD equals fetched <code>origin/&lt;branch&gt;</code></td>
-<td>divergent or stale checkouts are refused</td>
+<td><code>make release-assets</code></td>
+<td>Require the tag at HEAD and one wheel/sdist per <code>PACKAGE_PROJECTS</code> entry</td>
 </tr>
 <tr>
-<td>CI checkout matches the tested <code>GITHUB_SHA</code></td>
-<td>newer application commits require their own validation</td>
-</tr>
-<tr>
-<td>token is available</td>
-<td>use the credential order below</td>
-</tr>
-<tr>
-<td>lock refresh and package build succeed</td>
-<td>any failure stops publication</td>
+<td><code>make release</code></td>
+<td>Run versioning, reuse valid artifacts or build missing ones, then upload sequentially</td>
 </tr>
 </tbody>
 </table>
-<p>The generated release commit is <code>chore(release): v&lt;version&gt; [skip ci]</code>.
-Git hooks are disabled only for that semantic-release call, so hooks cannot rewrite the
-changelog during publication.</p>
-<h3 id="credentials">Credentials<a class="headerlink" href="#credentials" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Order</th>
-<th>Source</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td><code>GH_TOKEN</code> in the shell or <code>.env</code></td>
-</tr>
-<tr>
-<td>2</td>
-<td>the existing <code>gh auth login</code> session</td>
-</tr>
-<tr>
-<td>3</td>
-<td>hidden terminal prompt</td>
-</tr>
-</tbody>
-</table>
-<p><code>make release-assets</code> uses <code>GH_TOKEN</code> or the existing <code>gh</code> login.
-CI passes its automatic GitHub token. Never print a credential.</p>
-<h2 id="retry-an-interrupted-release">Retry an interrupted release<a class="headerlink" href="#retry-an-interrupted-release" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Retry the failed release job. When the release tag already points at HEAD, CI rebuilds
-   packages and retries upload without creating another version.</li>
-<li>A CI retry accepts the generated release commit only when its tag, subject and direct
-   parent identify the release of the tested source commit; only version metadata may differ.</li>
-<li>If another application commit has advanced the branch, let that commit's workflow
-   validate and release it.</li>
-<li>Locally, use <code>make release</code> on the matching clean release branch, or
-   <code>make build-package &amp;&amp; make release-assets</code> at the exact release commit.</li>
-</ol>
-<h2 id="github-actions">GitHub Actions<a class="headerlink" href="#github-actions" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Workflow</th>
-<th>Trigger</th>
-<th>Work</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>ci.yml</code></td>
-<td>feature pushes and pull requests</td>
-<td>PR title, static checks and software validation</td>
-</tr>
-<tr>
-<td><code>release.yml</code></td>
-<td>push to <code>main</code> or <code>dev</code>, or manual dispatch</td>
-<td>validation, guarded release and artifact upload</td>
-</tr>
-<tr>
-<td>docs job in <code>release.yml</code></td>
-<td>successful tagged <code>main</code> release</td>
-<td>deploy documentation from the release tag</td>
-</tr>
-</tbody>
-</table>
-<p>CI provisions a pinned, cached uv. Project dependencies still install through Make:
-<code>install-tools</code> for quality/docs jobs, <code>install-release</code> for publishing and <code>install-dev</code>
-for software tests. CI requires the lockfile to match the manifests.</p>
-<h2 id="repository-settings">Repository settings<a class="headerlink" href="#repository-settings" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Settings → Actions → General: enable the workflow permissions needed to write releases.</li>
-<li>Settings → Pages: deploy from the <code>gh-pages</code> branch. Create it with the first
-   <code>make deploy-doc-gh</code>.</li>
-<li>Enable squash merging so pull request titles follow the
-   <a href="../3.conventions/#commit-convention">commit convention</a>.</li>
-<li>After a stable release, merge <code>main</code> into <code>dev</code> and resolve version/changelog conflicts
-   using the stable release as the base for the next candidate.</li>
-</ol>
+<p>All workspace package versions equal the root version. Tags retain <code>vX.Y.Z-rc.N</code> spelling;
+Python artifacts use normalized <code>X.Y.ZrcN</code> filenames.
+CI retries may accept the exact tagged, single-parent <code>chore(release): v&lt;version&gt; [skip ci]</code> child of
+the tested source; newer application changes require validation. Git hooks are disabled only during
+semantic-release. With no new version or matching tag at HEAD, <code>make release</code> stops without uploading.</p>
+<h2 id="repository-settings-once">Repository settings (once)<a class="headerlink" href="#repository-settings-once" title="Permanent link">&para;</a></h2>
+<p>Enable Actions release write permissions and configure Pages to deploy from <code>gh-pages</code>.
+Enable squash merging so PR titles determine versions. CI installs frozen tools with
+<code>install-tools</code>, <code>install-release</code> or <code>install-dev</code> according to the job.</p>
+<h2 id="after-a-release-sync-main-into-dev">After a release: sync main into dev<a class="headerlink" href="#after-a-release-sync-main-into-dev" title="Permanent link">&para;</a></h2>
+<p>Merge <code>main</code> back into <code>dev</code> after a stable release. Use the stable version/changelog as the base
+for the next candidate; see <a href="../3.conventions/#branches-and-pull-requests">branch conventions</a>.</p>
 
 
 

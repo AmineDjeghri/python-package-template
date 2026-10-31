@@ -621,10 +621,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#github-login-once-only-to-release" class="md-nav__link">
+  <a href="#optional-environments" class="md-nav__link">
     <span class="md-ellipsis">
       
-        GitHub login (once, only to release)
+        Optional environments
       
     </span>
   </a>
@@ -632,54 +632,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#develop-in-a-container-optional" class="md-nav__link">
+  <a href="#documentation-and-editor" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Develop in a container (optional)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#run-the-github-actions-locally-optional" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Run the GitHub Actions locally (optional)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ide" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        IDE
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#comprehensive-software-validation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Comprehensive software validation
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tool-only-environments" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tool-only environments
+        Documentation and editor
       
     </span>
   </a>
@@ -1230,10 +1186,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#github-login-once-only-to-release" class="md-nav__link">
+  <a href="#optional-environments" class="md-nav__link">
     <span class="md-ellipsis">
       
-        GitHub login (once, only to release)
+        Optional environments
       
     </span>
   </a>
@@ -1241,54 +1197,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#develop-in-a-container-optional" class="md-nav__link">
+  <a href="#documentation-and-editor" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Develop in a container (optional)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#run-the-github-actions-locally-optional" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Run the GitHub Actions locally (optional)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ide" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        IDE
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#comprehensive-software-validation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Comprehensive software validation
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tool-only-environments" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tool-only environments
+        Documentation and editor
       
     </span>
   </a>
@@ -1319,106 +1231,66 @@
 
 
 <h1 id="1-setup">1. Setup<a class="headerlink" href="#1-setup" title="Permanent link">&para;</a></h1>
-<p>Get a working development environment.</p>
+<p>Prepare the package, development tools and documentation environment.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Tool</th>
-<th>Version</th>
-<th>Needed for</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>make, bash, git</td>
-<td>Linux, macOS or Windows (Git Bash / WSL)</td>
-<td>everything</td>
-</tr>
-<tr>
-<td>uv</td>
-<td>recent</td>
-<td>everything; <code>make install-uv</code> installs it</td>
-</tr>
-<tr>
-<td>Python</td>
-<td>&gt;= 3.12(<code>requires-python</code>)</td>
-<td>everything; uv downloads it when missing</td>
-</tr>
-<tr>
-<td>gh CLI</td>
-<td>any</td>
-<td>releasing from a laptop (<code>make release</code>)</td>
-</tr>
-<tr>
-<td>Docker</td>
-<td>any</td>
-<td>optional: developing in a container, <code>make act</code></td>
-</tr>
-</tbody>
-</table>
+<p>Make, Bash, Git and uv on Linux, macOS or Windows with Git Bash/WSL.
+uv provisions Python 3.12–3.14.8; run <code>make install-uv</code> if uv is missing.</p>
 <h2 id="install">Install<a class="headerlink" href="#install" title="Permanent link">&para;</a></h2>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AmineDjeghri/python-package-template.git
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>python-package-template
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>make<span class="w"> </span>install-dev<span class="w">          </span><span class="c1"># .venv with the package (editable), dev and docs tools</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>make<span class="w"> </span>pre-commit-install<span class="w">   </span><span class="c1"># git hook: the checks run on every commit</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>cp<span class="w"> </span>.env.example<span class="w"> </span>.env<span class="w">      </span><span class="c1"># optional: LOGGING_LEVEL and your own settings</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>make<span class="w"> </span>test-smoke-cli<span class="w">    </span><span class="c1"># prints a hello message</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>make<span class="w"> </span>test-all<span class="w">                 </span><span class="c1"># everything is green</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>make<span class="w"> </span>install-dev
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>make<span class="w"> </span>pre-commit-install
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>make<span class="w"> </span>check
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>make<span class="w"> </span>run
 </span></code></pre></div>
-<p><code>uv pip install -e .</code> also works in an environment you manage yourself (venv, conda...).</p>
-<h2 id="github-login-once-only-to-release">GitHub login (once, only to release)<a class="headerlink" href="#github-login-once-only-to-release" title="Permanent link">&para;</a></h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>gh<span class="w"> </span>auth<span class="w"> </span>login<span class="w">             </span><span class="c1"># github.com, HTTPS, browser login</span>
-</span></code></pre></div>
-<p><code>make release-version</code> uses that login; nothing to put in <code>.env</code>. See <a href="../5.release/#credentials">5. Release</a>.</p>
-<h2 id="develop-in-a-container-optional">Develop in a container (optional)<a class="headerlink" href="#develop-in-a-container-optional" title="Permanent link">&para;</a></h2>
+<p>This creates <code>.venv</code>, installs the editable package and Git hooks, validates the checkout
+and runs the greeting example. No integration service or credentials are needed.
+Optionally copy <code>.env.example</code> to <code>.env</code> to customize settings such as <code>LOGGING_LEVEL</code>.</p>
+<h2 id="optional-environments">Optional environments<a class="headerlink" href="#optional-environments" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th>Command</th>
-<th>Does</th>
+<th>Use</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>make docker-build</code></td>
-<td>builds the <code>python-package-template</code> image from the <code>Dockerfile</code></td>
+<td><code>make install-tools</code></td>
+<td>Static/docs tools without the application dependencies</td>
 </tr>
 <tr>
-<td><code>make docker-prod</code></td>
-<td>runs it with a shell</td>
+<td><code>make install-release</code></td>
+<td>Packaging and release tools</td>
+</tr>
+<tr>
+<td><code>make docker-build</code></td>
+<td>Build the development image</td>
 </tr>
 <tr>
 <td><code>make docker-dev</code></td>
-<td>runs it with the project mounted in <code>/app</code></td>
+<td>Open a container with this project mounted in <code>/app</code></td>
+</tr>
+<tr>
+<td><code>make docker-prod</code></td>
+<td>Open a shell in the built image</td>
 </tr>
 </tbody>
 </table>
-<p>Inside the container: <code>make test-smoke-cli</code> and <code>make test-all</code>. If a local <code>.venv</code> conflicts with
-the mounted one, delete the local one (<code>rm -rf .venv</code>).</p>
-<h2 id="run-the-github-actions-locally-optional">Run the GitHub Actions locally (optional)<a class="headerlink" href="#run-the-github-actions-locally-optional" title="Permanent link">&para;</a></h2>
-<p><code>make install-act</code>, then <code>make act</code> (Docker must be running).</p>
-<h2 id="ide">IDE<a class="headerlink" href="#ide" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Interpreter: <code>.venv/bin/python</code>.</li>
-<li>PyCharm: mark <code>src</code> as Sources Root and <code>tests</code> as Test Sources Root, so imports resolve.</li>
-<li><code>.editorconfig</code> sets indentation and line endings (tabs in <code>Makefile</code> and <code>*.mk</code>).</li>
-</ul>
-<p><code>make help</code> lists every target.</p>
-<h2 id="comprehensive-software-validation">Comprehensive software validation<a class="headerlink" href="#comprehensive-software-validation" title="Permanent link">&para;</a></h2>
-<p><code>make test-all</code> is the required comprehensive software check for users, developers and CI.
-This template currently has no integration suite or live-service credential requirement. Future
-integration suites must join this command; see <a href="../4.testing/">the testing guide</a> for the current suite scope. A focused
-<code>make test-local</code> pass does not
-establish full validation. Missing services or skipped integration must be reported as incomplete.
-Coverage and artifact/runtime checks remain explicit alongside this command.</p>
-<h2 id="tool-only-environments">Tool-only environments<a class="headerlink" href="#tool-only-environments" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Use <code>make install-tools</code> for quality checks and documentation without application dependencies.</li>
-<li>Use <code>make install-release</code> for packaging and release tools only.</li>
-<li>Run <code>make pre-commit-install</code> once per checkout; checks and docs commands do not reinstall hooks
-   or dependencies. <code>make install-dev</code> remains the full application/test environment.</li>
-</ol>
+<p>Inside the container, use <code>make run</code> and <code>make check</code>. If a mounted host <code>.venv</code> conflicts,
+recreate it for the container. A manually managed environment can use <code>uv pip install -e .</code>;
+that alone does not install the development tools.</p>
+<h2 id="documentation-and-editor">Documentation and editor<a class="headerlink" href="#documentation-and-editor" title="Permanent link">&para;</a></h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>make<span class="w"> </span>deploy-doc-local
+</span></code></pre></div>
+<p>Use <code>.venv/bin/python</code> as the interpreter; mark <code>src</code> and <code>tests</code> as source/test roots.
+Follow <code>.editorconfig</code> for indentation and line endings.
+Hooks are installed once with <code>make pre-commit-install</code>; docs/check targets do not reinstall them.</p>
+<p>For workflow debugging, Docker plus <code>make install-act</code> enables <code>make act</code>.
+For publication, see <a href="../5.release/#credentials">release credentials</a>.
+Next: <a href="../3.conventions/">Conventions</a> and <a href="../4.testing/">Testing</a>. <code>make help</code> lists all targets.</p>
+<p>Agent rules live in <code>AGENTS.md</code>; <code>CLAUDE.md</code> links to it for Claude Code.
+Edit <code>AGENTS.md</code> to update the shared instructions.</p>
 
 
 

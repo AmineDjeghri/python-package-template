@@ -683,10 +683,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#required-checks" class="md-nav__link">
+  <a href="#before-a-pull-request" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Required checks
+        Before a pull request
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#focused-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Focused checks
       
     </span>
   </a>
@@ -705,32 +716,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-make-pre-commit-checks" class="md-nav__link">
+  <a href="#hooks-and-ci" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What make pre-commit checks
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ci" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        CI
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#release-regression-checks" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Release regression checks
+        Hooks and CI
       
     </span>
   </a>
@@ -1175,10 +1164,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#required-checks" class="md-nav__link">
+  <a href="#before-a-pull-request" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Required checks
+        Before a pull request
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#focused-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Focused checks
       
     </span>
   </a>
@@ -1197,32 +1197,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-make-pre-commit-checks" class="md-nav__link">
+  <a href="#hooks-and-ci" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What make pre-commit checks
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ci" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        CI
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#release-regression-checks" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Release regression checks
+        Hooks and CI
       
     </span>
   </a>
@@ -1253,107 +1231,65 @@
 
 
 <h1 id="4-testing">4. Testing<a class="headerlink" href="#4-testing" title="Permanent link">&para;</a></h1>
-<p><code>make test-all</code> is the required comprehensive software check for users, developers and GitHub Actions.
-Run it before reporting that the software is fully validated. It runs the self-contained suites first,
-then real-service integration tests where a suite exists. <code>make test-local</code> remains a focused diagnostic
-shortcut; passing it does not establish full validation. The ambiguous <code>make test</code> target is removed.</p>
-<p>Keep static quality, coverage reporting and artifact/runtime checks explicit alongside software tests.
-<code>make check</code> runs static hooks (including strict documentation) once, then <code>make test-all</code>.
-It can call real services when an integration suite exists. <code>make help</code> lists focused commands and their requirements.</p>
-<p>The comprehensive command does not accept per-suite <code>ARGS</code> filters; use focused targets for selected
-tests. Worker-count options remain available.</p>
-<h2 id="required-checks">Required checks<a class="headerlink" href="#required-checks" title="Permanent link">&para;</a></h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>make<span class="w"> </span>install-dev
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>make<span class="w"> </span>test-all
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>make<span class="w"> </span>pre-commit
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>make<span class="w"> </span>docs-build
+<p>Run all existing software tests and static/documentation checks.</p>
+<h2 id="before-a-pull-request">Before a pull request<a class="headerlink" href="#before-a-pull-request" title="Permanent link">&para;</a></h2>
+<p>After <a href="../1.setup/">setup</a>, run:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>make<span class="w"> </span>check
 </span></code></pre></div>
-<p>This template currently has unit tests and no integration suite. <code>make test-all</code> runs every existing
-software test, and CI explicitly reports that integration coverage does not yet exist. Add future
-integration suites to <code>test-all</code>; never silently omit them or claim they ran. Empty test selections fail.</p>
-<p><code>make test-unit</code> and <code>make test-local</code> are focused commands. Use <code>make test-all N=8</code> to change worker
-count. The explicit <code>make test-smoke-cli</code> runs the development environment's <code>hello</code> command; it does
-not prove that a built wheel installs in a clean environment. Coverage reporting is not currently configured.
-Build-package and clean-environment installation checks remain separate from comprehensive software tests.</p>
-<p>GitHub Actions and both release branches invoke <code>make test-all</code>. Its always-running summary records
-complete or incomplete software validation, including setup failures where tests never start.</p>
+<p>This runs <code>make pre-commit</code> (including strict docs), then <code>make test-all</code>.
+All current tests are self-contained; there is no integration suite or coverage instrumentation yet.
+Future integration suites must join <code>test-all</code> and CI.</p>
+<h2 id="focused-checks">Focused checks<a class="headerlink" href="#focused-checks" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>make test-all</code></td>
+<td>Every existing software test; required comprehensive software check</td>
+</tr>
+<tr>
+<td><code>make test-unit</code> / <code>make test-local</code></td>
+<td>Unit tests; use <code>ARGS</code> to select cases</td>
+</tr>
+<tr>
+<td><code>make test-installation</code></td>
+<td>Build the wheel, install it in a throwaway env, load <code>hello</code></td>
+</tr>
+<tr>
+<td><code>make pre-commit</code></td>
+<td>Static hooks and strict docs</td>
+</tr>
+<tr>
+<td><code>make docs-build</code></td>
+<td>Strict docs build only</td>
+</tr>
+<tr>
+<td><code>make build-package</code></td>
+<td>Build and verify the wheel/sdist separately</td>
+</tr>
+</tbody>
+</table>
+<p>For example:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>make<span class="w"> </span>test-unit<span class="w"> </span><span class="nv">N</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">ARGS</span><span class="o">=</span><span class="s2">&quot;-k release&quot;</span>
+</span></code></pre></div>
+<p>Tests use four workers by default (<code>N=4</code>). <code>test-all</code> rejects selection filters; empty collections fail.
+<code>make test-installation</code> (alias <code>make test-smoke-cli</code>) builds the wheel and loads its entry point in an
+isolated environment; it is not part of <code>test-all</code>.</p>
 <h2 id="writing-tests">Writing tests<a class="headerlink" href="#writing-tests" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Use <code>tests/unit/test_&lt;module&gt;.py</code> for package tests and <code>tests/unit/docs/</code> or
-  <code>tests/unit/release/</code> for tooling. See the <a href="../../../tests/">test map</a>.</li>
-<li>Tests run in parallel: no shared state. Use <code>tmp_path</code> for files and <code>monkeypatch</code> for
-  environment variables (see <code>tests/unit/test_settings.py</code>). Settings tests disable local <code>.env</code>
-  loading and import the application from an isolated working directory.</li>
-<li>Async tests: <code>pytest-asyncio</code> in strict mode, mark them with <code>@pytest.mark.asyncio</code>.</li>
-</ul>
-<h2 id="what-make-pre-commit-checks">What <code>make pre-commit</code> checks<a class="headerlink" href="#what-make-pre-commit-checks" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Hook</th>
-<th>Checks</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>pre-commit-hooks</td>
-<td>large files, TOML/YAML/JSON syntax, end of file, trailing whitespace, merge conflicts, LF line endings, test file names</td>
-</tr>
-<tr>
-<td>ruff, ruff-format</td>
-<td>lint (docstrings, unused imports) and format</td>
-</tr>
-<tr>
-<td>detect-secrets</td>
-<td>no credential in a file</td>
-</tr>
-<tr>
-<td>uv-lock</td>
-<td><code>uv.lock</code> matches <code>pyproject.toml</code></td>
-</tr>
-<tr>
-<td>markdownlint-cli2, codespell</td>
-<td>Markdown style and spelling</td>
-</tr>
-<tr>
-<td>properdocs build --strict</td>
-<td>the documentation builds, no broken link</td>
-</tr>
-<tr>
-<td>commitizen (on commit)</td>
-<td>commit message format</td>
-</tr>
-</tbody>
-</table>
-<h2 id="ci">CI<a class="headerlink" href="#ci" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Workflow</th>
-<th>Trigger</th>
-<th>Runs</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>👷 CI — Validate</code> (<code>ci.yml</code>)</td>
-<td>push on any branch except <code>main</code>/<code>dev</code>, pull requests</td>
-<td>PR title check, <code>make pre-commit</code>, <code>make test-all</code></td>
-</tr>
-<tr>
-<td>the shared release workflow</td>
-<td>push to <code>dev</code> / <code>main</code></td>
-<td>the same checks first, then the release (<a href="../5.release/">5. Release</a>)</td>
-</tr>
-</tbody>
-</table>
-<h2 id="release-regression-checks">Release regression checks<a class="headerlink" href="#release-regression-checks" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Run <code>make test-unit</code> for release guards, prerelease filenames, incomplete artifacts, upload
-   recovery and build failures. Git, GitHub and version commands use isolated test substitutes.</li>
-<li>Run <code>make docs-build</code> to verify the API reference for every package.</li>
-<li>Run <code>make build-package</code> separately to build and verify the complete wheel/sdist set.</li>
-</ol>
+<p>Use <code>tests/unit/test_&lt;module&gt;.py</code>; <a href="../../../tests/">tests/README.md</a> maps docs/release tests.
+Use <code>tmp_path</code> and <code>monkeypatch</code> so parallel tests share no state or local dotenv settings.
+Mark async tests with <code>@pytest.mark.asyncio</code> (strict mode).
+Release tests use isolated Git/GitHub/uv command substitutes and never publish.</p>
+<h2 id="hooks-and-ci">Hooks and CI<a class="headerlink" href="#hooks-and-ci" title="Permanent link">&para;</a></h2>
+<p>Hooks cover syntax/whitespace, Ruff, secrets, the lockfile, Markdown/spelling and strict docs.
+Commitizen validates messages at commit time; see <code>.pre-commit-config.yaml</code> for details.
+CI and both release branches run static checks and <code>test-all</code>; summaries include setup failures.
+Build/package installation checks remain separate, and no live-service validation is claimed.</p>
 
 
 

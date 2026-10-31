@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#contributing-to-this-project" class="md-skip">
+        <a href="#contributing" class="md-skip">
           Skip to content
         </a>
       
@@ -1090,21 +1090,18 @@
 
 
 
-<h1 id="contributing-to-this-project">Contributing to this project<a class="headerlink" href="#contributing-to-this-project" title="Permanent link">&para;</a></h1>
-<p>First off, thanks for taking the time to contribute! ❤️ Everyone taking part follows the
-<a href="../CODE_OF_CONDUCT/">Code of Conduct</a>; report unacceptable behavior by opening an issue.</p>
-<p>Team members: the contributors of the repository.</p>
+<h1 id="contributing">Contributing<a class="headerlink" href="#contributing" title="Permanent link">&para;</a></h1>
 <ol>
-<li>Set up once: <a href="../docs/developer/1.setup/">Setup</a> (<code>make install-dev</code>, <code>make pre-commit-install</code>).</li>
-<li>Comment on (or create) the issue, then branch off <code>dev</code> (<code>feature/&lt;name&gt;</code>, <code>bugfix/&lt;name&gt;</code>) and
-   follow the <a href="../docs/developer/3.conventions/">Conventions</a>.</li>
-<li>Before pushing: <code>make test-all</code> and <code>make pre-commit</code> (<a href="../docs/developer/4.testing/">Testing</a>).</li>
-<li>Open a pull request to <code>dev</code>. Its title follows the
-   <a href="../docs/developer/3.conventions/#commit-convention">commit convention</a>: it decides the next
-   version. Never edit the version or create a tag by hand.</li>
+<li>Follow <a href="../docs/developer/1.setup/">Setup</a>, then coordinate on an issue.</li>
+<li>Branch from <code>dev</code>: <code>feature/&lt;name&gt;</code> or <code>bugfix/&lt;name&gt;</code>.</li>
+<li>Update the relevant docs and run <code>make check</code> (<a href="../docs/developer/4.testing/">Testing</a>).</li>
+<li>Open a PR to <code>dev</code> using a <a href="../docs/developer/3.conventions/#commit-convention">Conventional Commit title</a>.
+   PRs are squash-merged; the title determines the version.</li>
 </ol>
-<p>Releases (by hand or by GitHub Actions): <a href="../docs/developer/5.release/">Release</a>.
-Security issues: <a href="../SECURITY/">SECURITY.md</a>, never a public issue.</p>
+<p>See <a href="../docs/developer/5.release/">Release</a> for publication and recovery.
+Coding agents need explicit approval for commits, pushes and publishing.
+Follow the <a href="../CODE_OF_CONDUCT/">Code of Conduct</a>; report security issues through
+<a href="../SECURITY/">SECURITY.md</a>, never a public issue.</p>
 
 
 
