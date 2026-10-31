@@ -15,7 +15,7 @@ generated API docs and Conventional Commit releases. Supports Python 3.12–3.14
 
 ## Get started
 
-With Make, Bash, Git and uv available:
+With Make, Bash, Git and available:
 
 ```bash
 git clone https://github.com/AmineDjeghri/python-package-template.git
@@ -24,8 +24,7 @@ make install-dev
 make run
 ```
 
-This installs the editable package and tools, sets up hooks, validates the checkout and runs the example.
-No live service or integration credentials are required. `make help` lists all commands.
+`make help` lists all commands.
 
 ## Use the package
 

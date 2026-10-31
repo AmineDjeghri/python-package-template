@@ -32,7 +32,7 @@ make deploy-doc-gh        # documentation to GitHub Pages
 - Never commit, push, tag, create a GitHub release, run `make release*` / `make deploy-doc-gh` or
   `gh workflow run` without asking first.
 - `make release-version` must keep its guards: branch `main` or `dev`, clean tree, in sync with
-  `origin`, token from `GH_TOKEN`, then `gh auth login`, then a prompt. Never print a credential.
+  `origin`, token from `GH_TOKEN`, then the saved `gh auth token`, then a prompt. Never print a credential.
 - Versions, tags and `CHANGELOG.md` belong to semantic-release (Conventional Commits,
   `docs/developer/3.conventions.md`): never edit `project.version` by hand.
 - Settings in `ApplicationSettings`; secrets as `SecretStr`, set by environment or `.env`, never in

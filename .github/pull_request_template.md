@@ -21,7 +21,7 @@
 ## ✅ PR Checklist
 
 - [ ] I have read and follow the [Contributing Guide](../CONTRIBUTING.md)
-- [ ] My **PR title** follows [conventional commits](../CONTRIBUTING.md#commit-convention) (`feat:`, `fix:`, etc.) — it becomes the squash commit message
+- [ ] My **PR title** follows [conventional commits](../docs/developer/3.conventions.md#commit-convention) (`feat:`, `fix:`, etc.) — it becomes the squash commit message
 - [ ] I ran `make pre-commit` locally — no errors
 - [ ] I ran `make test-all` locally — all tests pass
 - [ ] I have added or updated tests and documentation where needed
