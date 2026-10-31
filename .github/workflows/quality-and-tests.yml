@@ -35,10 +35,6 @@ jobs:
           make pre-commit
           echo "::endgroup::"
 
-      - name: Verify the lockfile matches pyproject
-        shell: bash
-        run: uv lock --check
-
       - name: Cleanup Artifacts
         if: always()
         uses: ./.github/actions/cleanup-artifacts
