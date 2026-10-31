@@ -1,7 +1,7 @@
 # =============================================================================
 # Reusable Workflow — 👷 Quality Check & Tests
 # =============================================================================
-# Shared by: ci.yml, main-release.yml, dev-release.yml
+# Shared by: ci.yml and release.yml
 # Runs pre-commit first, then tests sequentially.
 # =============================================================================
 name: "👷 Quality Check & Tests"
@@ -26,6 +26,8 @@ jobs:
 
       - name: Install Python Dependencies
         uses: ./.github/actions/install-python-deps
+        with:
+          profile: tools
 
       - name: Run Pre-commit
         id: pre_commit
@@ -35,9 +37,6 @@ jobs:
           make pre-commit
           echo "::endgroup::"
 
-      - name: Cleanup Artifacts
-        if: always()
-        uses: ./.github/actions/cleanup-artifacts
 
   tests:
     name: "Full software validation (test-all)"
@@ -78,7 +77,3 @@ jobs:
           else
             echo 'Full software validation is incomplete: make test-all failed or did not run. A focused/local-only pass is insufficient.' >> "$GITHUB_STEP_SUMMARY"
           fi
-
-      - name: Cleanup Artifacts
-        if: always()
-        uses: ./.github/actions/cleanup-artifacts

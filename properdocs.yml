@@ -64,6 +64,7 @@ plugins:
         - docker_data/**
         - dist/**
         - reports/**
+        - tests/unit/**
         - bin/**
         - docker/**
         - .idea/**
@@ -72,6 +73,8 @@ plugins:
         - .deepeval/**
         - .deepteam/**
         - .changelog/**
+        - AGENTS.md
+        - CLAUDE.md
         - docs/examples/data/sample.*
 
 markdown_extensions:
@@ -98,6 +101,7 @@ nav:
       - 2. Project structure: docs/developer/2.project-structure.md
       - 3. Conventions: docs/developer/3.conventions.md
       - 4. Testing: docs/developer/4.testing.md
+      - Test map: tests/README.md
       - 5. Release: docs/developer/5.release.md
       - 6. Fork this template: docs/developer/6.fork.md
   - Examples: docs/examples/
