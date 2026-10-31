@@ -2,6 +2,15 @@
 
 <!-- version list -->
 
+## v1.3.2 (2026-10-31)
+
+### Bug Fixes
+
+- **release**: Re-lock and stage uv.lock inside the release commit (#92)
+  ([#92](https://github.com/AmineDjeghri/python-package-template/pull/92),
+  [`e45da3f`](https://github.com/AmineDjeghri/python-package-template/commit/e45da3f9255c5a3fcc4c8d32b987764e918ca9da))
+
+
 ## v1.3.1 (2026-10-30)
 
 ### Bug Fixes
