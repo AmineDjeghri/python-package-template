@@ -54,7 +54,6 @@ plugins:
         - scripts/gen_example_pages.py
   - search
   - same-dir
-  - mermaid2
   - literate-nav:
       nav_file: SUMMARY.md
   - exclude:
@@ -88,7 +87,11 @@ markdown_extensions:
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - tables

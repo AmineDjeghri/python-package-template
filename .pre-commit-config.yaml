@@ -14,6 +14,7 @@ repos:
         args: ['--maxkb=3000']
       - id: check-toml
       - id: check-yaml
+        args: ['--unsafe']  # ProperDocs uses a Python tag for the native Mermaid formatter.
       - id: check-json
       - id: end-of-file-fixer
       #      - id: requirements-txt-fixer
