@@ -15,8 +15,9 @@ test-all: ## Run every existing software suite (no integration tests exist yet)
 test-unit: ## Run package unit tests with pytest (N=4 workers; empty selection fails)
 	@$(UV) run pytest tests/unit --numprocesses=$(N) $(ARGS)
 
-test-smoke-cli: ## Run hello from the development environment (does not validate a built wheel)
-	@$(UV) run --directory . hello
+test-installation: build-package ## Install the built wheel in a throwaway env and check the hello command loads
+	@wheel=$$(ls -t dist/*.whl | head -1); \
+	$(UV) run --isolated --no-project --with "$$wheel" python -c \
+		"from importlib.metadata import entry_points; ep = entry_points(group='console_scripts')['hello']; ep.load(); print('OK', ep.name, '->', ep.value)"
 
-# Compatibility name; use test-smoke-cli.
-test-installation: test-smoke-cli
+test-smoke-cli: test-installation ## Alias of test-installation (kept for compatibility)
