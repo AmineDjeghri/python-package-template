@@ -28,7 +28,7 @@ repos:
         exclude: ^tests/unit/release/fixtures/release_command\.py$
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.17.0
+    rev: v0.17.2
     hooks:
       - id: ruff
         args: [ --fix ]
@@ -41,13 +41,13 @@ repos:
         -   id: detect-secrets
 
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v4.8.3
+    rev: v4.19.3
     hooks:
       - id: commitizen
         stages: [commit-msg]
 
   - repo: https://github.com/astral-sh/uv-pre-commit
-    rev: 0.9.11
+    rev: 0.13.5
     hooks:
       # Update the uv lockfile
       - id: uv-lock
@@ -59,7 +59,7 @@ repos:
         language_version: '24.22.1'
 
   - repo: https://github.com/codespell-project/codespell
-    rev: v2.4.1
+    rev: v2.4.3
     hooks:
       - id: codespell
         types: [markdown]
