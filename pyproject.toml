@@ -51,6 +51,7 @@ build-backend = "setuptools.build_meta"
 
 #### pytest configuration
 [tool.pytest.ini_options]
+testpaths = ["tests/unit"]
 asyncio_mode = "strict"
 asyncio_default_fixture_loop_scope = "function"
 

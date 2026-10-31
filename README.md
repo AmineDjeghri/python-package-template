@@ -118,14 +118,15 @@ make install-dev && make pre-commit-install && make test-all
 
 Start with [CONTRIBUTING.md](CONTRIBUTING.md), then the developer guide:
 
-| Page                                                            | Content                                                         |
-|-----------------------------------------------------------------|-----------------------------------------------------------------|
-| [1. Setup](docs/developer/1.setup.md)                           | prerequisites, install, GitHub login, Docker, IDE               |
-| [2. Project structure](docs/developer/2.project-structure.md)   | layout, where to add a module, a setting, an example            |
-| [3. Conventions](docs/developer/3.conventions.md)               | code, logging, branches, commit convention, secrets, Renovate   |
-| [4. Testing](docs/developer/4.testing.md)                       | `make test-all`, what `make pre-commit` checks, CI              |
-| [5. Release](docs/developer/5.release.md)                       | guarded releases, artifact recovery, documentation deployment   |
-| [6. Fork this template](docs/developer/6.fork.md)               | what to rename                                                  |
+| Page                                                              | Content                                                           |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| [1. Setup](docs/developer/1.setup.md)                             | prerequisites, install, GitHub login, Docker, IDE                 |
+| [2. Project structure](docs/developer/2.project-structure.md)     | layout, where to add a module, a setting, an example              |
+| [3. Conventions](docs/developer/3.conventions.md)                 | code, logging, branches, commit convention, secrets, Renovate     |
+| [4. Testing](docs/developer/4.testing.md)                         | `make test-all`, what `make pre-commit` checks, CI                |
+| [Test map](tests/README.md)                                       | package, documentation and release test locations                 |
+| [5. Release](docs/developer/5.release.md)                         | guarded releases, artifact recovery, documentation deployment     |
+| [6. Fork this template](docs/developer/6.fork.md)                 | what to rename                                                    |
 
 ## Comprehensive software validation
 
