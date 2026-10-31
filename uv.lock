@@ -928,7 +928,7 @@ wheels = [
 
 [[package]]
 name = "python-package-template"
-version = "1.3.0"
+version = "1.3.1"
 source = { editable = "." }
 default-groups = []
 dependencies = [
