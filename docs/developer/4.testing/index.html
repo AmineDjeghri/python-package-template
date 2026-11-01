@@ -740,10 +740,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#hooks-and-ci" class="md-nav__link">
+  <a href="#ci" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Hooks and CI
+        CI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#static-and-documentation-hooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Static and documentation hooks
       
     </span>
   </a>
@@ -803,7 +814,7 @@
   <span class="md-ellipsis">
     
   
-    6. Fork this template
+    6. Fork
   
 
     
@@ -1221,10 +1232,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#hooks-and-ci" class="md-nav__link">
+  <a href="#ci" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Hooks and CI
+        CI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#static-and-documentation-hooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Static and documentation hooks
       
     </span>
   </a>
@@ -1260,15 +1282,16 @@
 <h1 id="4-testing">4. Testing<a class="headerlink" href="#4-testing" title="Permanent link">&para;</a></h1>
 <p>Run all existing software tests and static/documentation checks.</p>
 <h2 id="before-a-pull-request">Before a pull request<a class="headerlink" href="#before-a-pull-request" title="Permanent link">&para;</a></h2>
-<p>Complete <a href="../1.setup/">setup</a>, run:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>make<span class="w"> </span>pre-commit
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>make<span class="w"> </span>test-all
+<p>Complete <a href="../1.setup/">setup</a>, then run the three checks:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>make<span class="w"> </span>pre-commit<span class="w">   </span><span class="c1"># static checks and hooks</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>make<span class="w"> </span>test-all<span class="w">     </span><span class="c1"># tests</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>make<span class="w"> </span>docs-build<span class="w">   </span><span class="c1"># strict documentation build</span>
 </span></code></pre></div>
-<p>Or</p>
+<p><code>make check</code> runs all three at once (and first warns if the Git hooks are missing):</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>make<span class="w"> </span>check
 </span></code></pre></div>
-<p>This runs <code>make pre-commit</code> (including strict docs), then <code>make test-all</code>.
-All current tests are self-contained; there is no integration suite or coverage instrumentation yet.
+<p>All current tests are self-contained; there is no integration suite or coverage instrumentation yet.
+<code>test-all</code> runs the unit tests, then builds the wheel and loads its entry point in an isolated environment.
 Future integration suites must join <code>test-all</code> and CI.</p>
 <h2 id="focused-checks">Focused checks<a class="headerlink" href="#focused-checks" title="Permanent link">&para;</a></h2>
 <table>
@@ -1280,8 +1303,12 @@ Future integration suites must join <code>test-all</code> and CI.</p>
 </thead>
 <tbody>
 <tr>
+<td><code>make check</code></td>
+<td><code>pre-commit-status</code>, <code>pre-commit</code>, <code>test-all</code> and <code>docs-build</code></td>
+</tr>
+<tr>
 <td><code>make test-all</code></td>
-<td>Every existing software test; required comprehensive software check</td>
+<td>Unit tests plus the built-wheel smoke; required comprehensive check</td>
 </tr>
 <tr>
 <td><code>make test-unit</code> / <code>make test-local</code></td>
@@ -1293,7 +1320,11 @@ Future integration suites must join <code>test-all</code> and CI.</p>
 </tr>
 <tr>
 <td><code>make pre-commit</code></td>
-<td>Static hooks and strict docs</td>
+<td>Static hooks and strict docs; <code>FILES="path/a path/b"</code> selects files</td>
+</tr>
+<tr>
+<td><code>make pre-commit-status</code></td>
+<td>Warn when the Git hooks are not installed</td>
 </tr>
 <tr>
 <td><code>make docs-build</code></td>
@@ -1309,18 +1340,24 @@ Future integration suites must join <code>test-all</code> and CI.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>make<span class="w"> </span>test-unit<span class="w"> </span><span class="nv">N</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">ARGS</span><span class="o">=</span><span class="s2">&quot;-k release&quot;</span>
 </span></code></pre></div>
 <p>Tests use four workers by default (<code>N=4</code>). <code>test-all</code> rejects selection filters; empty collections fail.
-<code>make test-installation</code> (alias <code>make test-smoke-cli</code>) builds the wheel and loads its entry point in an
-isolated environment; it is not part of <code>test-all</code>.</p>
+<code>make test-installation</code> builds the wheel and loads its entry point in an isolated environment; <code>test-all</code>
+runs it after the unit tests.</p>
 <h2 id="writing-tests">Writing tests<a class="headerlink" href="#writing-tests" title="Permanent link">&para;</a></h2>
 <p>Use <code>tests/unit/test_&lt;module&gt;.py</code>; <a href="../../../tests/">tests/README.md</a> maps docs/release tests.
 Use <code>tmp_path</code> and <code>monkeypatch</code> so parallel tests share no state or local dotenv settings.
 Mark async tests with <code>@pytest.mark.asyncio</code> (strict mode).
 Release tests use isolated Git/GitHub/uv command substitutes and never publish.</p>
-<h2 id="hooks-and-ci">Hooks and CI<a class="headerlink" href="#hooks-and-ci" title="Permanent link">&para;</a></h2>
-<p>Hooks cover syntax/whitespace, Ruff, secrets, the lockfile, Markdown/spelling and strict docs.
-Commitizen validates messages at commit time; see <code>.pre-commit-config.yaml</code> for details.
-CI and both release branches run static checks and <code>test-all</code>; summaries include setup failures.
+<h2 id="ci">CI<a class="headerlink" href="#ci" title="Permanent link">&para;</a></h2>
+<p>CI and both release branches run static checks and <code>test-all</code>; summaries include setup failures.
 Build/package installation checks remain separate, and no live-service validation is claimed.</p>
+<h2 id="static-and-documentation-hooks">Static and documentation hooks<a class="headerlink" href="#static-and-documentation-hooks" title="Permanent link">&para;</a></h2>
+<p>Hooks check formatting and lint (Ruff), syntax and whitespace, secrets, Markdown and spelling, the
+lockfile and the strict docs build, workflow syntax (actionlint) and workflow security (zizmor). Commitizen runs only at the commit-msg stage.
+<code>make install-dev</code> installs the Git hooks in a checkout (not in CI or Docker); run
+<code>make pre-commit-install</code> if that step failed, and <code>make pre-commit-status</code> (part of <code>make check</code>) warns
+when they are missing. <code>make pre-commit</code> only runs the hooks and never installs them.
+See <code>.pre-commit-config.yaml</code> for the full list; pip-audit, bandit and markdown-link-check are disabled. <code>.github/zizmor.yml</code> holds the one
+zizmor exception: the release workflow's checkouts keep their credentials because they push.</p>
 
 
 

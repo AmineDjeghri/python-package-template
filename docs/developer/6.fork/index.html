@@ -27,7 +27,7 @@
     
     
       
-        <title>6. Fork this template - Python Package Template</title>
+        <title>6. Fork - Python Package Template</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#6-fork-this-template" class="md-skip">
+        <a href="#6-fork" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              6. Fork this template
+              6. Fork
             
           </span>
         </div>
@@ -721,7 +721,7 @@
   <span class="md-ellipsis">
     
   
-    6. Fork this template
+    6. Fork
   
 
     
@@ -739,7 +739,7 @@
   <span class="md-ellipsis">
     
   
-    6. Fork this template
+    6. Fork
   
 
     
@@ -787,10 +787,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#stay-in-sync-with-the-template" class="md-nav__link">
+  <a href="#stay-in-sync-with-upstream" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Stay in sync with the template
+        Stay in sync with upstream
       
     </span>
   </a>
@@ -1199,10 +1199,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#stay-in-sync-with-the-template" class="md-nav__link">
+  <a href="#stay-in-sync-with-upstream" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Stay in sync with the template
+        Stay in sync with upstream
       
     </span>
   </a>
@@ -1235,7 +1235,7 @@
   
 
 
-<h1 id="6-fork-this-template">6. Fork this template<a class="headerlink" href="#6-fork-this-template" title="Permanent link">&para;</a></h1>
+<h1 id="6-fork">6. Fork<a class="headerlink" href="#6-fork" title="Permanent link">&para;</a></h1>
 <p>Start a new Python package from this repository.</p>
 <h2 id="rename">Rename<a class="headerlink" href="#rename" title="Permanent link">&para;</a></h2>
 <table>
@@ -1272,11 +1272,11 @@
 </tr>
 <tr>
 <td>version and changelog</td>
-<td>semantic-release owns versions and <code>CHANGELOG.md</code>; never edit them by hand</td>
+<td>semantic-release owns <code>project.version</code> and <code>CHANGELOG.md</code>; never edit them by hand</td>
 </tr>
 </tbody>
 </table>
-<p>Then: <code>uv lock</code>, <code>make test-all</code>, <code>make pre-commit</code>.</p>
+<p>Then: <code>uv lock</code>, <code>make install-dev</code>, <code>make check</code>.</p>
 <h2 id="once-on-github">Once on GitHub<a class="headerlink" href="#once-on-github" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Create <code>main</code> and <code>dev</code>, and protect them; use squash merges for pull requests. Allow
@@ -1285,13 +1285,13 @@
    (<a href="../5.release/#repository-settings-once">5. Release</a>).</li>
 <li>Install the Renovate app on the repository.</li>
 </ol>
-<h2 id="stay-in-sync-with-the-template">Stay in sync with the template<a class="headerlink" href="#stay-in-sync-with-the-template" title="Permanent link">&para;</a></h2>
+<h2 id="stay-in-sync-with-upstream">Stay in sync with upstream<a class="headerlink" href="#stay-in-sync-with-upstream" title="Permanent link">&para;</a></h2>
 <p>Shared files: <code>makefiles/</code>, <code>Makefile</code>, <code>scripts/emoji_commit_parser.py</code>, <code>.pre-commit-config.yaml</code>,
 <code>.markdownlint-cli2.yaml</code>, <code>.github/</code>, <code>docs/developer/</code>.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>template-upstream<span class="w"> </span>https://github.com/AmineDjeghri/python-package-template.git
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>git<span class="w"> </span>fetch<span class="w"> </span>template-upstream
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>git<span class="w"> </span>checkout<span class="w"> </span>template-upstream/main<span class="w"> </span>--<span class="w"> </span>makefiles/release.mk<span class="w">   </span><span class="c1"># the files you want</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>git<span class="w"> </span>diff<span class="w"> </span>--staged<span class="w">                                              </span><span class="c1"># review before committing</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>https://github.com/AmineDjeghri/python-package-template.git
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>git<span class="w"> </span>fetch<span class="w"> </span>upstream
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>git<span class="w"> </span>checkout<span class="w"> </span>upstream/main<span class="w"> </span>--<span class="w"> </span>makefiles/release.mk<span class="w">   </span><span class="c1"># the files you want</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>git<span class="w"> </span>diff<span class="w"> </span>--staged<span class="w">                                     </span><span class="c1"># review before committing</span>
 </span></code></pre></div>
 
 

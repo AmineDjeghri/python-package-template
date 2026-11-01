@@ -662,10 +662,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#add-a-module" class="md-nav__link">
+  <a href="#where-to-add-things" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Add a module
+        Where to add things
       
     </span>
   </a>
@@ -677,6 +677,17 @@
     <span class="md-ellipsis">
       
         Add a setting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-a-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add a module
       
     </span>
   </a>
@@ -803,7 +814,7 @@
   <span class="md-ellipsis">
     
   
-    6. Fork this template
+    6. Fork
   
 
     
@@ -1199,10 +1210,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#add-a-module" class="md-nav__link">
+  <a href="#where-to-add-things" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Add a module
+        Where to add things
       
     </span>
   </a>
@@ -1214,6 +1225,17 @@
     <span class="md-ellipsis">
       
         Add a setting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-a-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add a module
       
     </span>
   </a>
@@ -1283,13 +1305,38 @@
 </span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>properdocs.yml          documentation site (MkDocs Material)
 </span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>CHANGELOG.md            written by semantic-release, never by hand
 </span></code></pre></div>
-<h2 id="add-a-module">Add a module<a class="headerlink" href="#add-a-module" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Add <code>src/python_package_template/&lt;module&gt;.py</code>, with Google-style docstrings: they become the
-   API reference page automatically.</li>
-<li>Add <code>tests/unit/test_&lt;module&gt;.py</code>, or use a responsibility subfolder for tooling tests.</li>
-<li>Log with the package logger: <code>from python_package_template.settings import logger</code>.</li>
-</ol>
+<h2 id="where-to-add-things">Where to add things<a class="headerlink" href="#where-to-add-things" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Where</th>
+<th>Help</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a module</td>
+<td><code>src/python_package_template/&lt;module&gt;.py</code> and <code>tests/unit/test_&lt;module&gt;.py</code></td>
+<td><a href="#add-a-module">Add a module</a></td>
+</tr>
+<tr>
+<td>a setting</td>
+<td><code>settings.py</code></td>
+<td><a href="#add-a-setting">Add a setting</a></td>
+</tr>
+<tr>
+<td>an example</td>
+<td><code>docs/examples/&lt;name&gt;.py</code></td>
+<td><a href="#add-an-example">Add an example</a></td>
+</tr>
+<tr>
+<td>a make target</td>
+<td><code>makefiles/&lt;concern&gt;.mk</code> with a <code>## description</code></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
 <h2 id="add-a-setting">Add a setting<a class="headerlink" href="#add-a-setting" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
@@ -1303,6 +1350,13 @@
    <code>.env.example</code>.</p>
 </li>
 <li>Secrets are <code>SecretStr</code>: read them with <code>.get_secret_value()</code>; they print as <code>**********</code>.</li>
+</ol>
+<h2 id="add-a-module">Add a module<a class="headerlink" href="#add-a-module" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Add <code>src/python_package_template/&lt;module&gt;.py</code>, with Google-style docstrings: they become the
+   API reference page automatically.</li>
+<li>Add <code>tests/unit/test_&lt;module&gt;.py</code>, or use a responsibility subfolder for tooling tests.</li>
+<li>Log with the package logger: <code>from python_package_template.settings import logger</code>.</li>
 </ol>
 <h2 id="add-an-example">Add an example<a class="headerlink" href="#add-an-example" title="Permanent link">&para;</a></h2>
 <p>Drop a <code>.py</code> file in <code>docs/examples/</code>. Its module docstring becomes the description on the

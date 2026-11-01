@@ -734,10 +734,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#renovate" class="md-nav__link">
+  <a href="#dependencies-renovate" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Renovate
+        Dependencies (Renovate)
       
     </span>
   </a>
@@ -825,7 +825,7 @@
   <span class="md-ellipsis">
     
   
-    6. Fork this template
+    6. Fork
   
 
     
@@ -1265,10 +1265,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#renovate" class="md-nav__link">
+  <a href="#dependencies-renovate" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Renovate
+        Dependencies (Renovate)
       
     </span>
   </a>
@@ -1307,7 +1307,7 @@
 <ul>
 <li>Use the <code>make</code> targets (<code>make help</code>): CI runs the same ones.</li>
 <li>Docstrings on public functions and classes (Google style): they generate the API reference.</li>
-<li>Settings through <code>ApplicationSettings</code> (<code>settings.py</code>), not <code>os.environ</code> scattered in the code.</li>
+<li>Settings through <code>ApplicationSettings</code> (<code>settings.py</code>, pydantic-settings), not <code>os.environ</code> scattered in the code.</li>
 <li>
 <p>Logging with the package's loguru logger, not <code>print</code>:</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">python_package_template.settings</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
@@ -1317,27 +1317,27 @@
 </li>
 <li>
 <p>Log, then raise; do not swallow exceptions:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;File not found: </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">. Current directory: </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The file </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2"> does not exist.&quot;</span><span class="p">)</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;File not found: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">. Current directory: </span><span class="si">{</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 </span></code></pre></div>
-</li>
-</ul>
 <p>In an <code>except</code> block, <code>logger.exception(...)</code> logs the message and the stack trace. Not
-  raising is fine only when the loop must go on.</p>
-<ul>
-<li>Large data: Polars. CPU-bound work: <code>multiprocessing.Pool.map</code>.</li>
+raising is fine only when a loop must go on after one failure.</p>
+</li>
+<li>
+<p>Large data: Polars. CPU-bound work: <code>multiprocessing</code> pool map.</p>
+</li>
 </ul>
 <h2 id="branches-and-pull-requests">Branches and pull requests<a class="headerlink" href="#branches-and-pull-requests" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Comment on (or create) the issue and wait to be assigned.</li>
 <li>Branch off <code>dev</code>: <code>feature/&lt;name&gt;</code> or <code>bugfix/&lt;name&gt;</code>. Stay up to date with <code>git merge dev</code>
    (branch already pushed) or <code>git rebase dev</code> (local only).</li>
-<li>Open a pull request to <code>dev</code>; its <strong>title</strong> follows the commit convention below: it becomes the
-   squash commit and decides the version.</li>
+<li>Run <code>make check</code> (<a href="../4.testing/">4. Testing</a>), then open a pull request to <code>dev</code>. Its <strong>title</strong>
+   follows the commit convention below: it becomes the squash commit and decides the version.</li>
 <li>When <code>dev</code> is ready, a pull request <code>dev</code> → <code>main</code> releases it.</li>
 <li>After a release, merge <code>main</code> back into <code>dev</code> (merge commit, direct push). On conflicts on
-   <code>CHANGELOG.md</code> or a <code>pyproject.toml</code> version, keep <code>main</code>'s.</li>
+   <code>CHANGELOG.md</code> or a <code>pyproject.toml</code> version, keep <code>main</code>'s and regenerate <code>uv.lock</code> with <code>uv lock</code>.</li>
 </ol>
 <table>
 <thead>
@@ -1361,11 +1361,11 @@
 <tr>
 <td><code>main</code> → <code>dev</code> (sync)</td>
 <td>merge commit, direct push</td>
-<td>squash only applies to pull requests</td>
+<td>syncs stable metadata; <code>[skip ci]</code> in the release commit prevents a spurious RC</td>
 </tr>
 </tbody>
 </table>
-<p>Never edit <code>project.version</code> or create a tag by hand: semantic-release does both.</p>
+<p>Never edit a version in <code>pyproject.toml</code> or create a tag by hand: semantic-release does both.</p>
 <h2 id="commit-convention">Commit convention<a class="headerlink" href="#commit-convention" title="Permanent link">&para;</a></h2>
 <p><code>[emoji] &lt;type&gt;[(&lt;scope&gt;)][!]: &lt;description&gt;</code>, the emoji is optional (<a href="https://gitmoji.dev/">Gitmoji</a>).</p>
 <table>
@@ -1410,33 +1410,38 @@
 </tr>
 </tbody>
 </table>
+<p>A <code>!</code> or a <code>BREAKING CHANGE:</code> footer makes any allowed type a breaking change (major release).</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>✨ feat(auth): add GitHub App token rotation
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>🐛 fix(llm): handle empty response from the API
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>💥 feat(api)!: remove the v1 endpoint
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>feat(auth): redesign token flow
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>BREAKING CHANGE: /v1/token removed, use /v2/auth instead
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>💥 feat!(api): remove the v1 endpoint
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>feat(auth): redesign token flow
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>BREAKING CHANGE: /v1/token removed, use /v2/auth instead
 </span></code></pre></div>
-<p>Scopes are optional, for example <code>llm</code>, <code>auth</code> or <code>api</code>.</p>
-<p>On <code>dev</code>, a releasable commit bumps the release candidate instead (<code>1.1.0-rc.1</code> → <code>1.1.0-rc.2</code>).</p>
+<p>On <code>dev</code>, a releasable commit increments the release-candidate counter (<code>1.1.0-rc.1</code> → <code>1.1.0-rc.2</code>)
+unless a larger bump is needed (for example, a breaking change → <code>2.0.0-rc.1</code> when the last stable
+release was <code>1.0.0</code>).</p>
+<p>Scopes are optional. Common scopes: <code>ci</code>, <code>deps</code>, <code>docs</code>. The commit message is checked on commit
+(commitizen) and the pull request title by <code>ci.yml</code>.</p>
 <h2 id="secrets">Secrets<a class="headerlink" href="#secrets" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Never write a credential to a file of the repository, even untracked: use <code>.env</code> (git-ignored).</li>
-<li><code>detect-secrets</code> runs on commit. For a line that intentionally references a secret placeholder (<code>${{ secrets.X }}</code>),
-  add <code># pragma: allowlist secret</code>. File-level exclusions in
+<li>Never write a credential to a file of the repository, even untracked: use environment variables or <code>.env</code> (git-ignored).</li>
+<li><code>detect-secrets</code> runs on commit. For a line that intentionally references a secret placeholder
+  (<code>${{ secrets.X }}</code>), add <code># pragma: allowlist secret</code>. File-level exclusions in
   <code>.pre-commit-config.yaml</code> only for recurring false positives; never exclude a whole workflow to
   silence one line.</li>
 </ul>
 <h2 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h2>
-<p>Adding, renaming or removing one, in the same change: the setting in <code>settings.py</code>,
-<code>.env.example</code>, and the workflow <code>env:</code> if CI needs it.</p>
-<h2 id="renovate">Renovate<a class="headerlink" href="#renovate" title="Permanent link">&para;</a></h2>
-<p>Renovate (<code>.github/renovate.json</code>) applies a 7-day cooldown to Python dependency,
-GitHub Actions, pre-commit and tracked Node updates. Python runtime/Docker updates require
-dependency dashboard approval and have no configured cooldown. Security fixes bypass
-grouping, cooldowns and dashboard approval. Runtime PyPI dependencies use ranges; dev/docs
-dependencies use exact pins in <code>pyproject.toml</code>. Resolved versions are locked by <code>uv.lock</code>. Review every Renovate pull request before merging; after merging one, wait
-for the others to rebase.</p>
+<p>Adding, renaming or removing one, in the same change: the setting in <code>settings.py</code>, <code>.env.example</code>, and the workflow <code>env:</code> if CI
+needs it.</p>
+<h2 id="dependencies-renovate">Dependencies (Renovate)<a class="headerlink" href="#dependencies-renovate" title="Permanent link">&para;</a></h2>
+<p>Renovate (<code>.github/renovate.json</code>) applies a 7-day cooldown to Python dependency, GitHub Actions,
+pre-commit and tracked Node updates. Python runtime/Docker updates require dependency dashboard approval
+and have no configured cooldown. Security fixes bypass grouping, cooldowns and dashboard approval.
+Runtime PyPI dependencies use ranges; dev/docs dependencies use exact pins in <code>pyproject.toml</code>.
+<code>uv.lock</code> locks the resolved versions. Review every Renovate pull request before merging; after merging
+one, wait for the others to rebase.</p>
 <ol>
 <li>The current <code>requires-python</code> range is <code>&gt;=3.12,&lt;=3.14.8</code>. Keep all package manifests aligned
    and write code compatible with Python 3.12; CI runs <code>make test-all</code> on Python 3.12, 3.13 and 3.14.8.</li>

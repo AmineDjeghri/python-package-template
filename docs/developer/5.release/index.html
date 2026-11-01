@@ -836,7 +836,7 @@
   <span class="md-ellipsis">
     
   
-    6. Fork this template
+    6. Fork
   
 
     
@@ -1350,15 +1350,14 @@ on the matching clean release branch. To upload from a clean checkout of the exa
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>make<span class="w"> </span>release-assets
 </span></code></pre></div>
 <p>If newer application commits exist, let their own workflow validate/release them.
-Never rebuild an older release from later source. <code>release-assets</code> can create a missing GitHub release
-and replaces same-named attachments; it does not publish to a package index.</p>
+Never rebuild an older release from later source. <code>release-assets</code> can create a missing GitHub
+release and replaces same-named attachments (<code>--clobber</code>); it does not publish to a package index.</p>
 <h2 id="credentials">Credentials<a class="headerlink" href="#credentials" title="Permanent link">&para;</a></h2>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>gh<span class="w"> </span>auth<span class="w"> </span>login
 </span></code></pre></div>
-<p>Credentials resolve from <code>GH_TOKEN</code> (environment or local <code>.env</code>), then the token saved by
-<code>gh auth login</code>, then a hidden
-terminal prompt. <code>release-assets</code> uses the token or gh login. CI supplies its automatic GitHub token;
-never print credentials. A tooling-only environment can use <code>make install-release</code>;
+<p>Credentials resolve from <code>GH_TOKEN</code> (environment or local <code>.env</code>), then the token saved by <code>gh auth login</code>,
+then a hidden terminal prompt. <code>release-assets</code> uses the token or gh login. CI supplies its
+automatic GitHub token; never print credentials. A tooling-only environment can use <code>make install-release</code>;
 docs need <code>make install-tools</code> or <code>make install-dev</code>.</p>
 <h2 id="release-sequence-and-safeguards">Release sequence and safeguards<a class="headerlink" href="#release-sequence-and-safeguards" title="Permanent link">&para;</a></h2>
 <table>
@@ -1394,9 +1393,8 @@ the tested source; newer application changes require validation. Git hooks are d
 semantic-release. With no new version or matching tag at HEAD, <code>make release</code> stops without uploading.</p>
 <h2 id="repository-settings-once">Repository settings (once)<a class="headerlink" href="#repository-settings-once" title="Permanent link">&para;</a></h2>
 <p>Enable Actions release write permissions and configure Pages to deploy from <code>gh-pages</code>.
-Enable squash merging so PR titles determine versions, and set the default squash commit
-message to the PR title. CI installs locked dependencies with
-<code>install-tools</code>, <code>install-release</code> or <code>install-dev</code> according to the job.</p>
+Enable squash merging so PR titles determine versions. Set the default squash commit message to the PR title.
+CI installs locked dependencies with <code>install-tools</code>, <code>install-release</code> or <code>install-dev</code> according to the job.</p>
 <h2 id="after-a-release-sync-main-into-dev">After a release: sync main into dev<a class="headerlink" href="#after-a-release-sync-main-into-dev" title="Permanent link">&para;</a></h2>
 <p>Merge <code>main</code> back into <code>dev</code> after a stable release. Use the stable version/changelog as the base
 for the next candidate; see <a href="../3.conventions/#branches-and-pull-requests">branch conventions</a>.</p>
