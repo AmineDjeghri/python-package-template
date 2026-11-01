@@ -73,7 +73,7 @@ jobs:
           if [ "$VERSION_RESULT" = success ] && [ "$TAGGED" = false ]; then
             echo 'No releasable commits; nothing published.' >> "$GITHUB_STEP_SUMMARY"
           elif [ "$ASSET_RESULT" = success ]; then
-            printf 'Release artifacts uploaded for `%s`.\n' "$RELEASE_TAG" >> "$GITHUB_STEP_SUMMARY"
+            printf "Release artifacts uploaded for \`%s\`.\n" "$RELEASE_TAG" >> "$GITHUB_STEP_SUMMARY"
           else
             echo 'Release failed; inspect the failed step before retrying.' >> "$GITHUB_STEP_SUMMARY"
           fi
