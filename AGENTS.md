@@ -12,8 +12,8 @@ documentation on GitHub Pages; there is no package index. Developer docs: `docs/
 ## Commands
 
 ```bash
-make install-dev          # .venv with dev and docs tools
-make pre-commit-install   # git hooks
+make install-dev          # .venv with dev and docs tools, plus the git hooks in a checkout
+make pre-commit-install   # reinstall the git hooks if needed
 make test-all                 # required comprehensive software validation
 make pre-commit           # static hooks; make test-all remains required
 make run                  # run the example

@@ -1,7 +1,7 @@
 # Installation targets
 # This file contains all installation-related targets
 
-.PHONY: install-uv install-dev install-tools install-release
+.PHONY: install-uv update-uv install-dev install-tools install-release
 
 install-tools: ## Install quality and docs tools without application dependencies
 	@$(UV) sync --only-group dev --only-group docs $(UV_SYNC_FLAGS)
@@ -33,12 +33,16 @@ else
 endif
 	@printf '%b\n' "${GREEN}install-uv complete${NC}" >&2
 
+update-uv: ## Explicitly update an existing uv installation
+	@$(UV) self update
+
 install-dev: ## Install all dev dependencies
 	@printf '%b\n' "${CYAN}=========> install-dev...${NC}" >&2
 	@printf '%b\n' "${YELLOW}=========> Installing dependencies...\n  \
 	 Development dependencies (dev & docs) will be installed by install-dev.${NC}"
 	@$(UV) sync --all-groups $(UV_SYNC_FLAGS)
 	@printf '%b\n' "${GREEN}Dependencies installed.${NC}"
+	@$(MAKE) --no-print-directory _pre-commit-install-auto
 	@printf '%b\n' "${GREEN}install-dev complete${NC}" >&2
 
 install-prod: ## Install prod dependencies only

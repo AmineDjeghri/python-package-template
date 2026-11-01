@@ -11,10 +11,10 @@ repos:
     rev: v6.0.0
     hooks:
       - id: check-added-large-files
-        args: ['--maxkb=3000']
+        args: [ '--maxkb=3000' ]
       - id: check-toml
       - id: check-yaml
-        args: ['--unsafe']  # ProperDocs uses a Python tag for the native Mermaid formatter.
+        args: [ '--unsafe' ]  # ProperDocs uses a Python tag for the native Mermaid formatter.
       - id: check-json
       - id: end-of-file-fixer
       #      - id: requirements-txt-fixer
@@ -36,16 +36,16 @@ repos:
       # Run the formatter.
       - id: ruff-format
 
-  -   repo: https://github.com/Yelp/detect-secrets
-      rev: v1.5.0
-      hooks:
-        -   id: detect-secrets
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.5.0
+    hooks:
+      - id: detect-secrets
 
   - repo: https://github.com/commitizen-tools/commitizen
     rev: v4.19.3
     hooks:
       - id: commitizen
-        stages: [commit-msg]
+        stages: [ commit-msg ]
 
   - repo: https://github.com/astral-sh/uv-pre-commit
     rev: 0.13.5
@@ -63,7 +63,7 @@ repos:
     rev: v2.4.3
     hooks:
       - id: codespell
-        types: [markdown]
+        types: [ markdown ]
         exclude: ^CHANGELOG\.md$
 
   - repo: local
@@ -75,31 +75,15 @@ repos:
         files: ^(docs/|src/|backend/src/|frontend/src/|tests/README\.md$|scripts/gen_.*\.py$|properdocs\.yml$|[^/]+\.md$)
         pass_filenames: false
 
-#  - repo: https://github.com/pypa/pip-audit
-#    rev: v2.10.0
-#    hooks:
-#      - id: pip-audit
 
-#  - repo: https://github.com/rhysd/actionlint
-#    rev: v1.7.12
-#    hooks:
-#      - id: actionlint
+  - repo: https://github.com/rhysd/actionlint
+    rev: v1.7.12
+    hooks:
+      - id: actionlint
 
-#  - repo: https://github.com/zizmorcore/zizmor-pre-commit
-#    rev: v1.25.2
-#    hooks:
-#      - id: zizmor
+  - repo: https://github.com/zizmorcore/zizmor-pre-commit
+    rev: v1.25.2
+    hooks:
+      - id: zizmor
 
-#  - repo: https://github.com/tcort/markdown-link-check
-#    # Note: This hook does not block commits if links are broken. It just reports them.
-#    rev: v3.14.2
-#    hooks:
-#      - id: markdown-link-check
-#        name: Markdown Link Check
-#        args: ['--config', '.markdown-link-check.json']
 
-#  - repo: https://github.com/PyCQA/bandit
-#    rev: 1.9.2
-#    hooks:
-#      - id: bandit
-#        exclude: ^tests/
