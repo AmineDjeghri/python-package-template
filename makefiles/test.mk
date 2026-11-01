@@ -2,9 +2,10 @@ N ?= 4
 
 .PHONY: check test-local test-all test-unit test-smoke-cli test-installation
 
-check: ## Run static checks (including strict docs) and comprehensive software validation
+check: ## Run static checks, comprehensive software validation and strict docs
 	@$(MAKE) pre-commit
 	@$(MAKE) test-all
+	@$(MAKE) docs-build
 
 test-local: test-unit ## Run all self-contained software tests
 
