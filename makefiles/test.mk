@@ -1,18 +1,23 @@
-# Testing targets
-# This file contains all testing-related targets
+N ?= 4
 
-.PHONY: test-installation test
+.PHONY: check test-local test-all test-unit test-smoke-cli test-installation
 
-test-installation: ## Test installation
-	@echo "${YELLOW}=========> Testing installation...${NC}"
-	@$(UV) run --directory . hello
+check: ## Run static checks (including strict docs) and comprehensive software validation
+	@$(MAKE) pre-commit
+	@$(MAKE) test-all
 
-test: ## Run tests with pytest
-	@echo "${YELLOW}Running tests...${NC}"
-	@set -e; \
-	$(UV) run pytest tests || rc=$$?; \
-	if [ "$${rc:-0}" -eq 5 ]; then \
-		echo "${YELLOW}No tests collected (pytest exit code 5) — treating as success.${NC}"; \
-	else \
-		exit "$${rc:-0}"; \
-	fi
+test-local: test-unit ## Run all self-contained software tests
+
+test-all: ## Run every existing software suite (no integration tests exist yet)
+	$(if $(strip $(ARGS)),$(error test-all requires the full suite; use a focused target for ARGS))
+	@$(MAKE) test-local
+
+test-unit: ## Run package unit tests with pytest (N=4 workers; empty selection fails)
+	@$(UV) run pytest tests/unit --numprocesses=$(N) $(ARGS)
+
+test-installation: build-package ## Install the built wheel in a throwaway env and check the hello command loads
+	@wheel=$$(ls -t dist/*.whl | head -1); \
+	$(UV) run --isolated --no-project --with "$$wheel" python -c \
+		"from importlib.metadata import entry_points; ep = entry_points(group='console_scripts')['hello']; ep.load(); print('OK', ep.name, '->', ep.value)"
+
+test-smoke-cli: test-installation ## Alias of test-installation (kept for compatibility)
