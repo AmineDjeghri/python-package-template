@@ -2,6 +2,15 @@
 
 <!-- version list -->
 
+## v1.0.3 (2026-11-02)
+
+### Bug Fixes
+
+- **deps**: Update python to v3.15.2 (#105)
+  ([#105](https://github.com/AmineDjeghri/python-package-template/pull/105),
+  [`4362655`](https://github.com/AmineDjeghri/python-package-template/commit/4362655536b317b9952733aaa81cf8da6f40f9f5))
+
+
 ## v1.0.2 (2026-11-02)
 
 ### Bug Fixes
