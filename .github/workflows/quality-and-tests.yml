@@ -26,7 +26,7 @@ jobs:
           fetch-depth: 0
 
       - name: Install Python Dependencies
-        uses: ./.github/actions/install-python-deps
+        uses: $/.github/actions/install-python-deps
         with:
           profile: tools
 
@@ -59,7 +59,7 @@ jobs:
 
 
       - name: Install Python Dependencies
-        uses: ./.github/actions/install-python-deps
+        uses: $/.github/actions/install-python-deps
 
       - name: make test-all
         id: software
