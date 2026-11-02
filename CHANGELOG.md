@@ -2,6 +2,15 @@
 
 <!-- version list -->
 
+## v1.0.2 (2026-11-02)
+
+### Bug Fixes
+
+- Renovate config alignment (#102)
+  ([#102](https://github.com/AmineDjeghri/python-package-template/pull/102),
+  [`2953861`](https://github.com/AmineDjeghri/python-package-template/commit/2953861055f20c11c5705727b2ad9a244f7d3f2f))
+
+
 ## v1.0.1 (2026-11-01)
 
 ### Bug Fixes
