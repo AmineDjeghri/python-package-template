@@ -1436,7 +1436,7 @@ release was <code>1.0.0</code>).</p>
 <p>Adding, renaming or removing one, in the same change: the setting in <code>settings.py</code>, <code>.env.example</code>, and the workflow <code>env:</code> if CI
 needs it.</p>
 <h2 id="dependencies-renovate">Dependencies (Renovate)<a class="headerlink" href="#dependencies-renovate" title="Permanent link">&para;</a></h2>
-<p>Renovate (<code>.github/renovate.json</code>) applies a 7-day cooldown to Python dependency, GitHub Actions,
+<p>Renovate (<code>.github/renovate.json5</code>) applies a 7-day cooldown to Python dependency, GitHub Actions,
 pre-commit and tracked Node updates. Python runtime/Docker updates require dependency dashboard approval
 and have no configured cooldown. Security fixes bypass grouping, cooldowns and dashboard approval.
 Runtime PyPI dependencies use ranges; dev/docs dependencies use exact pins in <code>pyproject.toml</code>.
@@ -1447,15 +1447,16 @@ one, wait for the others to rebase.</p>
    and write code compatible with Python 3.12; CI runs <code>make test-all</code> on Python 3.12, 3.13 and 3.14.8.</li>
 <li>Renovate is configured to propose widening <code>requires-python</code> after dependency dashboard
    approval, preserving the 3.12 minimum. Python Docker updates share the runtime update group
-   and also require approval; review all project constraints and update the CI matrix when needed.</li>
+   and also require approval; review all project constraints and update the CI matrix by hand
+   when needed.</li>
 <li>PyPI updates use strict Python compatibility filtering. Weekly lockfile maintenance refreshes
    versions already permitted by dependency ranges; review the lockfile and CI results too.</li>
 <li>Renovate updates dependency files, GitHub Actions and pre-commit revisions; update README
    and developer documentation when the supported Python range changes. Docs are not rewritten
    automatically.</li>
-<li>Renovate tracks the default Node pin in <code>default_language_version</code>; the Markdown hook
-   has a separate <code>language_version</code> override that must also be kept in sync. Stable updates
-   wait seven days and use <code>chore</code>; major upgrades require dependency dashboard approval.</li>
+<li>Renovate tracks the Node pin in <code>default_language_version</code>, which every Node-based hook uses.
+   Stable updates wait seven days and use <code>chore</code>; major upgrades open as normal pull requests
+   labelled <code>needs-compatibility-review</code>.</li>
 </ol>
 
 
