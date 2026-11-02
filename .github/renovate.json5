@@ -1,12 +1,8 @@
-// Renovate configuration. Comments are allowed (JSON5): keep this file on `.json5`.
-//
-// This file has the SAME skeleton in personal-os-setup, python-package-template and
-// generative-ai-project-template, so `diff` between any two shows only real differences.
-// Blocks marked [repo-specific] are meant to differ; everything else must stay identical.
-//
-// Rule order matters: later packageRules override earlier ones.
+// Renovate configuration. Later packageRules override earlier ones.
 {
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
+
+  // ---- Global behaviour ----
   extends: [
     "config:recommended",
     ":semanticCommits",
@@ -20,6 +16,8 @@
   prCreation: "immediate",
   prConcurrentLimit: 10,
   prHourlyLimit: 10,
+
+  // Security advisories (GitHub + OSV)
   vulnerabilityAlerts: {
     enabled: true,
     addLabels: ["security"],
@@ -28,14 +26,17 @@
   osvVulnerabilityAlerts: true,
   pinDigests: false,
   platformAutomerge: false,
+
+  // ---- Managers ----
+  // uv.lock
   lockFileMaintenance: {
     enabled: true,
   },
+  // .pre-commit-config.yaml: `rev:` of each hook repo
   "pre-commit": {
     enabled: true,
   },
-
-  // Node runtime used by the pre-commit hooks (`default_language_version: node:`).
+  // .pre-commit-config.yaml: `default_language_version: node:`
   customManagers: [
     {
       customType: "regex",
@@ -50,8 +51,15 @@
     },
   ],
 
+  // ---- Rules ----
   packageRules: [
-    // [repo-specific] requires-python: library, so widen after reviewing the CI matrix.
+    // pyproject.toml (all): releases compatible with `requires-python`
+    {
+      description: "Preserve compatibility with the full supported Python range",
+      matchDatasources: ["pypi"],
+      constraintsFiltering: "strict",
+    },
+    // pyproject.toml: `[project] requires-python`
     {
       description: "Widen Python support after reviewing the CI matrix and all project constraints",
       matchManagers: ["pep621"],
@@ -61,7 +69,7 @@
       groupName: "python runtime",
       dependencyDashboardApproval: true,
     },
-    // [repo-specific] Python Docker image: moves together with the supported runtime.
+    // Dockerfile*: `FROM python:...`
     {
       description: "Keep Python Docker images with supported-runtime updates",
       matchManagers: ["dockerfile"],
@@ -70,11 +78,7 @@
       semanticCommitType: "fix",
       dependencyDashboardApproval: true,
     },
-    {
-      description: "Preserve compatibility with the full supported Python range",
-      matchDatasources: ["pypi"],
-      constraintsFiltering: "strict",
-    },
+    // .pre-commit-config.yaml: `rev:` of each hook repo
     {
       description: "Group pre-commit updates (tooling only, no release)",
       matchManagers: ["pre-commit"],
@@ -83,6 +87,7 @@
       minimumReleaseAge: "7 days",
       semanticCommitType: "chore",
     },
+    // .pre-commit-config.yaml: `default_language_version: node:`
     {
       description: "Maintain stable pre-commit Node runtime updates as tooling",
       matchManagers: ["custom.regex"],
@@ -93,15 +98,16 @@
       ignoreUnstable: true,
       rangeStrategy: "pin",
     },
+    // .pre-commit-config.yaml: `default_language_version: node:` (major)
     {
       description: "Review major LTS upgrades of the pre-commit Node runtime",
       matchManagers: ["custom.regex"],
       matchDatasources: ["node-version"],
       matchPackageNames: ["node"],
       matchUpdateTypes: ["major"],
-      dependencyDashboardApproval: true,
       addLabels: ["needs-compatibility-review"],
     },
+    // .github/workflows/*.yml, .github/actions/*/action.yml: `uses:`
     {
       description: "Group GitHub Actions updates (CI only, no release)",
       matchManagers: ["github-actions"],
@@ -110,17 +116,17 @@
       minimumReleaseAge: "7 days",
       semanticCommitType: "chore",
     },
-    // [repo-specific] range strategy for runtime dependencies and extras.
+    // pyproject.toml: `[project] dependencies`, `[project.optional-dependencies]`
     {
-      description: "Widen library runtime and optional dependency ranges while preserving compatible older versions",
+      description: "Runtime Python dependencies and extras -> trigger a patch release",
       matchManagers: ["pep621"],
       matchDepTypes: ["dependencies", "project.dependencies", "project.optional-dependencies"],
       groupName: "python dependencies",
       groupSlug: "python",
       minimumReleaseAge: "7 days",
       semanticCommitType: "fix",
-      rangeStrategy: "widen",
     },
+    // pyproject.toml: `[dependency-groups]`
     {
       description: "Dev/docs Python dependency updates (dependency-groups) -> tooling only, no release needed",
       matchManagers: ["pep621"],
@@ -129,7 +135,9 @@
       groupSlug: "python-dev",
       minimumReleaseAge: "7 days",
       semanticCommitType: "chore",
+      rangeStrategy: "pin",
     },
+    // pyproject.toml: `[project] dependencies`, `[project.optional-dependencies]` (major)
     {
       description: "Major bumps of production deps need manual review for breaking changes",
       matchManagers: ["pep621"],
@@ -137,10 +145,8 @@
       matchUpdateTypes: ["major"],
       addLabels: ["needs-breaking-review"],
       semanticCommitType: "fix",
-      dependencyDashboardApproval: true,
     },
-    // Build backend: declare BOTH bounds in pyproject.toml (`>=floor,<=latest-tested`), because
-    // Renovate skips a requirement with no version. `replace` raises the `<=` bound on each release.
+    // pyproject.toml: `[build-system] requires` (declare both bounds: `>=floor,<=latest-tested`)
     {
       description: "Build-system requirements: keep a two-sided range and move its upper bound",
       matchManagers: ["pep621"],
@@ -148,6 +154,15 @@
       rangeStrategy: "replace",
       semanticCommitType: "chore",
       minimumReleaseAge: "7 days",
+    },
+
+    // ---- Repo-specific rules (keep last) ----
+    // pyproject.toml: runtime dependencies, extras
+    {
+      description: "Widen library runtime and optional dependency ranges while preserving compatible older versions",
+      matchManagers: ["pep621"],
+      matchDepTypes: ["dependencies", "project.dependencies", "project.optional-dependencies"],
+      rangeStrategy: "widen",
     },
   ],
 }

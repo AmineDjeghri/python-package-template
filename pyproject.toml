@@ -46,8 +46,11 @@ hello = "python_package_template.example:hello" # will read from __init__.py.
 
 
 [build-system]
-requires = ["setuptools>=61.0,<=84.2.1"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling>=1.27.0,<=1.33.0"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/python_package_template"]
 
 #### pytest configuration
 [tool.pytest.ini_options]
