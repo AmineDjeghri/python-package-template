@@ -2,6 +2,15 @@
 
 <!-- version list -->
 
+## v1.1.0 (2026-11-05)
+
+### Features
+
+- **release**: Add make release-status and rewrite the release page (#106)
+  ([#106](https://github.com/AmineDjeghri/python-package-template/pull/106),
+  [`a2ce25b`](https://github.com/AmineDjeghri/python-package-template/commit/a2ce25b9bf1fc8591eeaf768ff94788709dca6a5))
+
+
 ## v1.0.3 (2026-11-02)
 
 ### Bug Fixes
