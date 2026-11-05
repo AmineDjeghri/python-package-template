@@ -19,6 +19,7 @@ make pre-commit           # static hooks; make test-all remains required
 make run                  # run the example
 make build-package        # dist/ wheel + sdist
 make deploy-doc-local     # build and serve the documentation
+make release-status       # read-only preflight: branch, tree, origin sync, tag, GitHub release state
 make release-version      # build packages, semantic-release: version, CHANGELOG, tag, GitHub release (main/dev, clean, in sync)
 make release-assets       # attach dist/ to the GitHub release
 make release              # release-version + verified release-assets (manual release)
