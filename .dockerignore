@@ -1,4 +1,13 @@
+# Secrets never enter an image
+**/.env
+**/.env.*
+!.env.example
+**/*.pem
+**/*.key
+# Local environments and build output
 .venv/
+dist/
+site/
 *.pyc
 __pycache__/
 *.log

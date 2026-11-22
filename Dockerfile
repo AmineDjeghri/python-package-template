@@ -1,32 +1,23 @@
-# Run ``make docker-dev`` from the root of the project
-
-
-# Define an argument for the Python version, within the supported range if not provided.
+# Development image: `make docker-dev` opens a shell with this project mounted in /app.
+# PYTHON_VERSION: any version allowed by `requires-python` in pyproject.toml; Renovate proposes
+# updates in its "python runtime" group.
 ARG PYTHON_VERSION=3.14.7
 FROM python:${PYTHON_VERSION}-slim
-LABEL authors="amine"
 
-# Prevents Python from writing pyc files.
-ENV PYTHONDONTWRITEBYTECODE=1
-# output is written directly to stdout or stderr without delay, making logs appear immediately in the console or in log files.
-ENV PYTHONUNBUFFERED=1
+# uv, and make to run the project's make targets (git for the pre-commit hooks)
+COPY --from=ghcr.io/astral-sh/uv:0.13.6 /uv /uvx /usr/local/bin/
+RUN apt-get update && apt-get install -y --no-install-recommends make git ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
 
-# keep this in case some commands use sudo (tesseract for example). This docker doesn't need a password
-#RUN apt-get update &&  apt-get install -y sudo && apt-get clean && rm -rf /var/lib/apt/lists/*
-
-
-RUN apt update -y
-RUN apt upgrade -y
-RUN apt-get install build-essential -y
-RUN apt-get install curl -y
-RUN apt autoremove -y
-RUN apt autoclean -y
-
+# The environment lives outside /app, so mounting the project does not hide it
 WORKDIR /app
+ENV UV_PROJECT_ENVIRONMENT=/opt/venv \
+    PATH="/opt/venv/bin:$PATH" \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
 
-# Copy the source code into the container (the dockerfile is in a folder namled docker)
+# The whole project: the dev tools, tests and docs need it (.dockerignore keeps .env out)
 COPY . ./
-
 RUN make install-dev
 
 CMD ["bash"]
