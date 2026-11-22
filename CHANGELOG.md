@@ -2,6 +2,23 @@
 
 <!-- version list -->
 
+## v1.1.1 (2026-11-22)
+
+### Bug Fixes
+
+- Update docker (#115) ([#115](https://github.com/AmineDjeghri/python-package-template/pull/115),
+  [`843be83`](https://github.com/AmineDjeghri/python-package-template/commit/843be8368b1a73c049b28957238c7e1b7fe77781))
+
+### Documentation
+
+- Enable GitHub-style alerts with markdown-callouts (#114)
+  ([#114](https://github.com/AmineDjeghri/python-package-template/pull/114),
+  [`433647a`](https://github.com/AmineDjeghri/python-package-template/commit/433647a3f61ca59a0eaf14d9b2a2aa804b29e76e))
+
+- Update docs
+  ([`9e911bd`](https://github.com/AmineDjeghri/python-package-template/commit/9e911bde6702005aedd8c00b9700b90d5cf7ad31))
+
+
 ## v1.1.0 (2026-11-05)
 
 ### Features
