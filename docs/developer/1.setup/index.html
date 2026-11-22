@@ -1421,7 +1421,7 @@ Optionally copy <code>.env.example</code> to <code>.env</code> to customize sett
 </tr>
 <tr>
 <td><code>make docker-dev</code></td>
-<td>Open a container with this project mounted in <code>/app</code></td>
+<td>Open a shell with this project mounted in <code>/app</code></td>
 </tr>
 <tr>
 <td><code>make docker-prod</code></td>
@@ -1429,9 +1429,8 @@ Optionally copy <code>.env.example</code> to <code>.env</code> to customize sett
 </tr>
 </tbody>
 </table>
-<p>The Dockerfile currently calls <code>make install-dev</code> without first installing uv; install uv
-in the image before that step to use these Docker targets. Inside the container, use
-<code>make run</code> and <code>make check</code>. <code>docker-dev</code> uses a separate volume for <code>/app/.venv</code>.
+<p>Inside the container, use <code>make run</code> and <code>make check</code>. The environment lives in <code>/opt/venv</code>, so
+mounting the project does not hide it.
 A manually managed environment can use <code>uv pip install -e .</code>; that alone does not install
 the development tools. For publication, see <a href="../5.release/#before-you-start">release credentials</a>.</p>
 <h2 id="editor-and-agent-rules">Editor and agent rules<a class="headerlink" href="#editor-and-agent-rules" title="Permanent link">&para;</a></h2>

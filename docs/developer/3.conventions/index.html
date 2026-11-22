@@ -1443,10 +1443,11 @@ Runtime PyPI dependencies use ranges; dev/docs dependencies use exact pins in <c
 <code>uv.lock</code> locks the resolved versions. Review every Renovate pull request before merging; after merging
 one, wait for the others to rebase.</p>
 <ol>
-<li>The current <code>requires-python</code> range is <code>&gt;=3.12,&lt;=3.14.8</code>. Keep all package manifests aligned
-   and write code compatible with Python 3.12; CI runs <code>make test-all</code> on Python 3.12, 3.13 and 3.14.8.</li>
+<li><code>requires-python</code> in <code>pyproject.toml</code> is the supported range. Keep all package manifests aligned
+   and write code compatible with its minimum; CI runs <code>make test-all</code> on each version of the matrix
+   in <code>.github/workflows/quality-and-tests.yml</code>.</li>
 <li>Renovate is configured to propose widening <code>requires-python</code> after dependency dashboard
-   approval, preserving the 3.12 minimum. Python Docker updates share the runtime update group
+   approval, preserving the minimum. Python Docker updates share the runtime update group
    and also require approval; review all project constraints and update the CI matrix by hand
    when needed.</li>
 <li>PyPI updates use strict Python compatibility filtering. Weekly lockfile maintenance refreshes
