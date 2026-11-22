@@ -46,14 +46,14 @@ this template does not publish to a package index.
 
 ## Guides
 
-| Task                                             | Guide                                                                              |
-|--------------------------------------------------|------------------------------------------------------------------------------------|
-| Install tools, configure an editor or use Docker | [Setup](docs/developer/1.setup.md)                                                 |
-| Add code or settings                             | [Project structure](docs/developer/2.project-structure.md)                         |
-| Contribute a change                              | [Contributing](CONTRIBUTING.md) and [conventions](docs/developer/3.conventions.md) |
-| Run tests and checks                             | [Testing](docs/developer/4.testing.md) and [test map](tests/README.md)             |
-| Publish or retry a release                       | [Release](docs/developer/5.release.md)                                             |
-| Start your own package                           | [Fork this template](docs/developer/6.fork.md)                                     |
+| Task                                             | Guide                                                                                                                                  |
+|--------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| Install tools, configure an editor or use Docker | [Setup](docs/developer/1.setup.md)                                                                                                     |
+| Add code or settings                             | [Project structure](docs/developer/2.project-structure.md)                                                                             |
+| Contribute a change                              | [Contributing](CONTRIBUTING.md) and [conventions](docs/developer/3.conventions.md)                                                     |
+| Run tests and checks                             | [Testing](docs/developer/4.testing.md) and [test map](tests/README.md)                                                                 |
+| Publish or retry a release                       | [Release](docs/developer/5.release.md)                                                                                                 |
+| Start your own package                           | [Use this template](https://github.com/AmineDjeghri/python-package-template/generate) and [rename guide](docs/developer/6.template.md) |
 
 Use `make deploy-doc-local` to preview the documentation.
 For a frontend/backend application, see the
