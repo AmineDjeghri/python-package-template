@@ -47,6 +47,6 @@ install-dev: ## Install all dev dependencies
 
 install-prod: ## Install prod dependencies only
 	@printf '%b\n' "${CYAN}=========> Installing dependencies (PROD)...${NC}" >&2
-	@$(UV) sync
+	@$(UV) sync $(UV_SYNC_FLAGS)
 	@printf '%b\n' "${GREEN}Dependencies installed.${NC}"
 	@printf '%b\n' "${GREEN}install-prod complete${NC}" >&2
