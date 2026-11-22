@@ -1,6 +1,6 @@
 # Python Package Template
 
-[![python](https://img.shields.io/badge/python-3.12--3.14.8-blue?logo=python)](https://www.python.org/downloads/)
+[![python](https://img.shields.io/python/required-version-toml?tomlFilePath=https%3A%2F%2Fraw.githubusercontent.com%2FAmineDjeghri%2Fpython-package-template%2Fmain%2Fpyproject.toml&logo=python)](https://www.python.org/downloads/)
 [![Debian](https://img.shields.io/badge/Debian-A81D33?logo=debian&logoColor=fff)](https://www.debian.org/)
 [![macOS](https://img.shields.io/badge/macOS-000000?logo=apple&logoColor=F0F0F0)](https://www.apple.com/macos/)
 [![Style: Ruff](https://img.shields.io/badge/style-ruff-41B5BE?style=flat)](https://github.com/astral-sh/ruff)
@@ -11,7 +11,8 @@
 <img src="docs/images/logo.svg" alt="Python Package Template logo" width="160" />
 
 A Python library template with uv, Pydantic settings, loguru, pytest, Ruff, Git hooks,
-generated API docs and Conventional Commit releases. Supports Python 3.12–3.14.8.
+generated API docs and Conventional Commit releases. Supported Python versions: `requires-python`
+in `pyproject.toml`.
 
 ## Get started
 
